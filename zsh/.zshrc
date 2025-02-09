@@ -14,6 +14,8 @@ fi
 
 # Environment variables
 export PATH="$HOME/.local/bin:$PATH"
+export EDITOR="nvim"
+export VISUAL="nvim"
 
 source "${ZINIT_HOME}/zinit.zsh"
 
