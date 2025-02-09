@@ -71,6 +71,7 @@ alias gc="git commit"
 alias ga="git add"
 alias gs="git status"
 alias fuck="~/fuckcode/fuck.zsh"
+alias shut="wsl.exe --shutdown"
 
 # Set up fzf key bindings and fuzzy completion
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
