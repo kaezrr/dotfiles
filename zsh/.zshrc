@@ -16,6 +16,7 @@ fi
 export PATH="$HOME/.local/bin:$PATH"
 export EDITOR="nvim"
 export VISUAL="nvim"
+export NVM_DIR="$HOME/.nvm"
 
 source "${ZINIT_HOME}/zinit.zsh"
 
@@ -54,6 +55,7 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 # Keybinds
+bindkey -e
 bindkey '^Y' autosuggest-accept
 
 # Aliases
@@ -68,8 +70,10 @@ alias gpo="git push origin"
 alias gc="git commit"
 alias ga="git add"
 alias gs="git status"
+alias fuck="~/fuckcode/fuck.zsh"
 
 # Set up fzf key bindings and fuzzy completion
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 eval "$(zoxide init --cmd cd zsh)"
 

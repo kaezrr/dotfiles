@@ -34,6 +34,7 @@ return { -- Autoformat
       lua = { 'stylua' },
       html = { 'prettier' },
       css = { 'prettier' },
+      cpp = { 'clang-format' },
       markdown = { 'prettier' },
       json = { 'prettier' },
       javascript = { 'prettier' },
