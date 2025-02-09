@@ -12,7 +12,7 @@ config.animation_fps = 1
 config.cursor_blink_rate = 500
 config.audible_bell = "Disabled"
 
-wezterm.font("JetBrainsMono Nerd Font Mono", { weight = "Regular", stretch = "Normal", style = "Normal" })
+wezterm.font("MesloLGS NF")
 config.font_size = 12.0
 
 wezterm.on("gui-startup", function(cmd)
