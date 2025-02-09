@@ -13,7 +13,6 @@ config.cursor_blink_rate = 500
 config.audible_bell = "Disabled"
 
 wezterm.font("MesloLGS NF")
-config.font_size = 12.0
 
 wezterm.on("gui-startup", function(cmd)
 	local tab, pane, window = mux.spawn_window(cmd or {})
