@@ -72,6 +72,7 @@ alias ga="git add"
 alias gs="git status"
 alias fuck="~/fuckcode/fuck.zsh"
 alias shut="wsl.exe --shutdown"
+alias update="sudo apt update && sudo apt upgrade"
 
 # Set up fzf key bindings and fuzzy completion
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
