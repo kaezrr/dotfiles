@@ -172,7 +172,6 @@ return {
     --  - settings (table): Override the default settings passed when initializing the server.
     --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
     local servers = {
-      ts_ls = {},
       emmet_language_server = {
         capabilities = capabilities,
         filetypes = { 'html', 'javascriptreact' },
@@ -208,10 +207,10 @@ return {
     vim.list_extend(ensure_installed, {
       'stylua', -- Used to format Lua code
       'prettier',
-      'typescript-language-server',
       'emmet-language-server',
       'css-lsp',
       'html-lsp',
+      'typescript-language-server',
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
