@@ -16,7 +16,7 @@ fi
 export PATH="$HOME/.local/bin:$PATH"
 export EDITOR="nvim"
 export VISUAL="nvim"
-export NVM_DIR="$HOME/.nvm"
+export MANPAGER="nvim +Man!"
 
 source "${ZINIT_HOME}/zinit.zsh"
 
@@ -70,9 +70,7 @@ alias wezconfig="nvim /mnt/c/Users/kaezr/.wezterm.lua"
 
 # Random fuckery
 alias reload="exec zsh"
-alias fuck="~/fuckcode/fuck.zsh"
 alias shut="wsl.exe --shutdown"
-alias update="sudo apt update && sudo apt upgrade"
 
 # Git 
 alias gpo="git push origin"
@@ -81,7 +79,7 @@ alias ga="git add"
 alias gs="git status"
 
 # Set up fzf key bindings and fuzzy completion
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+source <(fzf --zsh)
 eval "$(zoxide init --cmd cd zsh)"
 
+source /usr/share/nvm/init-nvm.sh
