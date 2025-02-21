@@ -45,8 +45,9 @@ config.window_frame = {
 	inactive_titlebar_bg = "#313244",
 }
 
-config.window_decorations = "INTEGRATED_BUTTONS | RESIZE"
-config.default_prog = { "ubuntu2404.exe" }
+config.keys = {
+	{ key = "l", mods = "ALT", action = wezterm.action.ShowLauncher },
+}
 
 config.launch_menu = {
 	{
@@ -54,10 +55,17 @@ config.launch_menu = {
 		args = { "pwsh.exe", "-NoLogo" },
 	},
 	{
-		label = "WSL",
+		label = "Ubuntu",
 		args = { "ubuntu2404.exe" },
 	},
+	{
+		label = "Arch",
+		args = { "Arch.exe" },
+	},
 }
+
+config.window_decorations = "INTEGRATED_BUTTONS | RESIZE"
+config.default_prog = { "ubuntu2404.exe" }
 
 -- and finally, return the configuration to wezterm
 return config
