@@ -62,18 +62,23 @@ bindkey '^Y' autosuggest-accept
 alias vi="nvim"
 alias vim="nvim"
 alias ll="lsd -lA"
+alias cat="bat"
+
+# Configs
 alias zshconfig="nvim ~/.zshrc"
+alias wezconfig="nvim /mnt/c/Users/kaezr/.wezterm.lua"
+
+# Random fuckery
 alias reload="exec zsh"
+alias fuck="~/fuckcode/fuck.zsh"
+alias shut="wsl.exe --shutdown"
+alias update="sudo apt update && sudo apt upgrade"
 
 # Git 
 alias gpo="git push origin"
 alias gc="git commit"
 alias ga="git add"
 alias gs="git status"
-alias fuck="~/fuckcode/fuck.zsh"
-alias shut="wsl.exe --shutdown"
-alias update="sudo apt update && sudo apt upgrade"
-alias cat="bat"
 
 # Set up fzf key bindings and fuzzy completion
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
