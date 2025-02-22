@@ -81,5 +81,4 @@ alias gs="git status"
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
 eval "$(zoxide init --cmd cd zsh)"
-
 source /usr/share/nvm/init-nvm.sh
