@@ -66,11 +66,9 @@ alias cat="bat"
 
 # Configs
 alias zshconfig="nvim ~/.zshrc"
-alias wezconfig="nvim /mnt/c/Users/kaezr/.wezterm.lua"
 
 # Random fuckery
 alias reload="exec zsh"
-alias shut="wsl.exe --shutdown"
 
 # Git 
 alias gpo="git push origin"
