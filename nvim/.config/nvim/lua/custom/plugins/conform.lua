@@ -40,6 +40,7 @@ return { -- Autoformat
       javascript = { 'prettier' },
       javascriptreact = { 'prettier' },
       sh = { 'beautysh' },
+      rust = { 'rustfmt' },
     },
   },
 }

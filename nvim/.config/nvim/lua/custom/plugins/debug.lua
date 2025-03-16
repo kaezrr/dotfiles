@@ -117,9 +117,9 @@ return {
         program = function()
           return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
         end,
-        cwd = '${workspaceFolder}/build',
+        cwd = '${workspaceFolder}/',
         stopOnEntry = false,
-        args = { '../roms/tetris.gb' },
+        args = { '' },
       },
     }
     -- Change breakpoint icons

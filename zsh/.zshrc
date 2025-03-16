@@ -80,6 +80,24 @@ eval "$(zoxide init --cmd cd zsh)"
 source /usr/share/nvm/init-nvm.sh
 
 # Random fuckery
+cool() {
+    case "$1" in
+        on)
+            echo 100 | sudo tee /sys/class/hwmon/hwmon5/pwm1 > /dev/null
+            echo 80 | sudo tee /sys/class/hwmon/hwmon5/pwm2 > /dev/null
+            echo "Fans on"
+            ;;
+        off)
+            echo 0 | sudo tee /sys/class/hwmon/hwmon5/pwm1 > /dev/null
+            echo 0 | sudo tee /sys/class/hwmon/hwmon5/pwm2 > /dev/null
+            echo "Fans off"
+            ;;
+        *)
+            echo "Usage: cool [on | off]"
+            ;;
+    esac
+}
+
 webdev() {
   if [[ -z "$1" ]]; then
     echo "Usage: webdev <project_name>"
