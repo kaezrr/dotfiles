@@ -1,3 +1,8 @@
+# Always tmux, no questions asked!
+if [ -z "$TMUX" ]; then
+  exec tmux new-session -A -s main
+fi
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -78,24 +83,10 @@ alias gs="git status"
 source <(fzf --zsh)
 eval "$(zoxide init --cmd cd zsh)"
 
-webdev() {
-  if [[ -z "$1" ]]; then
-    echo "Usage: webdev <project_name>"
-    return 1
-  fi
-  local PROJECT_DIR="$HOME/Documents/projects/$1"
-  if [[ ! -d "$PROJECT_DIR" ]]; then
-    echo "Error: Directory '$PROJECT_DIR' does not exist!"
-    return 1
-  fi
-  local SESSION_NAME="$1"
-  tmux new-session -d -s "$SESSION_NAME" -c "$PROJECT_DIR" -n js
-  tmux new-window -t "$SESSION_NAME":2 -c "$PROJECT_DIR" -n html
-  tmux new-window -t "$SESSION_NAME":3 -c "$PROJECT_DIR" -n cmd
-  tmux split-window -h -t "$SESSION_NAME":cmd -c "$PROJECT_DIR"
-  tmux attach-session -t "$SESSION_NAME"
-}
+# Set up rust
+[ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
 
+# Set up node version manager
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
