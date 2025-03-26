@@ -77,26 +77,6 @@ alias gs="git status"
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
 eval "$(zoxide init --cmd cd zsh)"
-source /usr/share/nvm/init-nvm.sh
-
-# Random fuckery
-cool() {
-    case "$1" in
-        on)
-            echo 100 | sudo tee /sys/class/hwmon/hwmon5/pwm1 > /dev/null
-            echo 80 | sudo tee /sys/class/hwmon/hwmon5/pwm2 > /dev/null
-            echo "Fans on"
-            ;;
-        off)
-            echo 0 | sudo tee /sys/class/hwmon/hwmon5/pwm1 > /dev/null
-            echo 0 | sudo tee /sys/class/hwmon/hwmon5/pwm2 > /dev/null
-            echo "Fans off"
-            ;;
-        *)
-            echo "Usage: cool [on | off]"
-            ;;
-    esac
-}
 
 webdev() {
   if [[ -z "$1" ]]; then
@@ -115,3 +95,7 @@ webdev() {
   tmux split-window -h -t "$SESSION_NAME":cmd -c "$PROJECT_DIR"
   tmux attach-session -t "$SESSION_NAME"
 }
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
