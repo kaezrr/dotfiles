@@ -1,7 +1,7 @@
 # Always tmux, no questions asked!
-if [ -z "$TMUX" ]; then
-  exec tmux new-session -A -s main
-fi
+# if [ -z "$TMUX" ]; then
+#   exec tmux new-session -A -s main
+# fi
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
