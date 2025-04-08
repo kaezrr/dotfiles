@@ -117,9 +117,9 @@ return {
         program = function()
           return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
         end,
-        cwd = '${workspaceFolder}/',
+        cwd = '${workspaceFolder}/src',
         stopOnEntry = false,
-        args = { '' },
+        args = { '../roms/legend.gb' },
       },
     }
     -- Change breakpoint icons

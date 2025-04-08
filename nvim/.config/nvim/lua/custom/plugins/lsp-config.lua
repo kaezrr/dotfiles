@@ -220,7 +220,6 @@ return {
       'stylua', -- Used to format Lua code
       'prettier',
       'emmet-language-server',
-      'css-lsp',
       'html-lsp',
       'typescript-language-server',
       'clangd',
