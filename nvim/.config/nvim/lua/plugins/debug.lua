@@ -119,7 +119,6 @@ return {
         end,
         cwd = '${workspaceFolder}/src',
         stopOnEntry = false,
-        args = { '../roms/legend.gb' },
       },
     }
     -- Change breakpoint icons

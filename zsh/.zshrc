@@ -14,6 +14,7 @@ fi
 
 # Environment variables
 export PATH="$HOME/.local/bin:$PATH"
+export PAGER="bat"
 export EDITOR="nvim"
 export VISUAL="nvim"
 export MANPAGER="nvim +Man!"

@@ -189,6 +189,13 @@ return {
         filetypes = { 'html', 'javascriptreact', 'typescriptreact' },
       },
 
+      ts_ls = {},
+      cssls = {},
+      docker_compose_language_service = {},
+      html = {},
+      tailwindcss = {},
+      yamlls = {},
+
       lua_ls = {
         -- cmd = {...},
         -- filetypes = { ...},
@@ -218,13 +225,9 @@ return {
     local ensure_installed = vim.tbl_keys(servers or {})
     vim.list_extend(ensure_installed, {
       'stylua', -- Used to format Lua code
-      'prettier',
-      'emmet-language-server',
-      'html-lsp',
-      'typescript-language-server',
-      'clangd',
+      'beautysh',
       'clang-format',
-      'rust-analyzer',
+      'prettier',
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
