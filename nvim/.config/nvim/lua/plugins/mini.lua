@@ -16,6 +16,8 @@ return { -- Collection of various small independent plugins/modules
     -- - sr)'  - [S]urround [R]eplace [)] [']
     require('mini.surround').setup()
     require('mini.icons').setup()
+    MiniIcons.mock_nvim_web_devicons()
+
     require('mini.pairs').setup()
 
     -- File system
