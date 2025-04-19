@@ -191,7 +191,6 @@ return {
 
       ts_ls = {},
       cssls = {},
-      docker_compose_language_service = {},
       html = {},
       tailwindcss = {},
       yamlls = {},
