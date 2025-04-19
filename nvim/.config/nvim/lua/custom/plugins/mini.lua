@@ -17,15 +17,6 @@ return { -- Collection of various small independent plugins/modules
     require('mini.surround').setup()
     require('mini.icons').setup()
     require('mini.pairs').setup()
-    require('mini.hipatterns').setup {
-      highlighters = {
-        fixme = { pattern = 'FIXME', group = 'MiniHipatternsFixme' },
-        hack = { pattern = 'HACK', group = 'MiniHipatternsHack' },
-        todo = { pattern = 'TODO', group = 'MiniHipatternsTodo' },
-        note = { pattern = 'NOTE', group = 'MiniHipatternsNote' },
-        hex_color = require('mini.hipatterns').gen_highlighter.hex_color(),
-      },
-    }
 
     -- File system
     local files = require 'mini.files'

@@ -186,7 +186,7 @@ return {
 
       emmet_language_server = {
         capabilities = capabilities,
-        filetypes = { 'html', 'javascriptreact' },
+        filetypes = { 'html', 'javascriptreact', 'typescriptreact' },
       },
 
       lua_ls = {
