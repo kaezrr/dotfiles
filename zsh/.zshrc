@@ -72,6 +72,7 @@ alias cat="bat"
 alias zshconfig="nvim ~/.zshrc"
 alias reload="exec zsh"
 alias nvil='NVIM_APPNAME=nvim-lab nvim'
+alias nvik='NVIM_APPNAME=nvim-kick nvim'
 
 # Git 
 alias gpo="git push origin"
