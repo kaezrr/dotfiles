@@ -105,11 +105,11 @@ return {
     }
 
     dashboard.section.buttons.val = {
-      dashboard.button('f', ' ' .. ' Find file', '<cmd> Telescope find_files <cr>'),
-      dashboard.button('r', ' ' .. ' Recent files', '<cmd> Telescope oldfiles <cr>'),
-      dashboard.button('c', ' ' .. ' Config', "<cmd> lua require('telescope.builtin').find_files { cwd = vim.fn.stdpath 'config' }<cr>"),
-      dashboard.button('u', '󰒲 ' .. ' Update', '<cmd> Lazy sync<cr>'),
-      dashboard.button('q', ' ' .. ' Quit', '<cmd> qa <cr>'),
+      dashboard.button('f', ' ' .. ' Find file', '<cmd>lua Snacks.picker.smart()<cr>'),
+      dashboard.button('r', ' ' .. ' Recent files', '<cmd>lua Snacks.picker.recent()<cr>'),
+      dashboard.button('c', ' ' .. ' Config', "<cmd>lua Snacks.picker.files { cwd = vim.fn.stdpath 'config' }<cr>"),
+      dashboard.button('u', '󰒲 ' .. ' Update', '<cmd>Lazy sync<cr>'),
+      dashboard.button('q', ' ' .. ' Quit', '<cmd>qa<cr>'),
     }
     vim.api.nvim_set_hl(0, 'AlphaHeader', { fg = '#311B92' })
     vim.api.nvim_set_hl(0, 'AlphaButtons', { fg = '#D1C4E9' })
