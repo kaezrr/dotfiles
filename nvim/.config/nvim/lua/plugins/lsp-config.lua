@@ -202,16 +202,14 @@ return {
         },
       },
 
-      emmet_language_server = {
-        capabilities = capabilities,
-        filetypes = { 'html', 'javascriptreact', 'typescriptreact' },
-      },
-
+      emmet_language_server = {},
       ts_ls = {},
       cssls = {},
       docker_compose_language_service = {},
       html = {},
-      tailwindcss = {},
+      tailwindcss = {
+        filetypes = { 'html', 'css', 'javascriptreact', 'typescriptreact' },
+      },
       yamlls = {},
 
       lua_ls = {
