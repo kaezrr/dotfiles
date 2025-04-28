@@ -205,12 +205,12 @@ return {
       emmet_language_server = {},
       ts_ls = {},
       cssls = {},
-      docker_compose_language_service = {},
       html = {},
       tailwindcss = {
         filetypes = { 'html', 'css', 'javascriptreact', 'typescriptreact' },
       },
       yamlls = {},
+      dockerls = {},
 
       lua_ls = {
         -- cmd = { ... },
