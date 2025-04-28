@@ -206,9 +206,6 @@ return {
       ts_ls = {},
       cssls = {},
       html = {},
-      tailwindcss = {
-        filetypes = { 'html', 'css', 'javascriptreact', 'typescriptreact' },
-      },
       yamlls = {},
       dockerls = {},
 
