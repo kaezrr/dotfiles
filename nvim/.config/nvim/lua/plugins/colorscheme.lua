@@ -6,9 +6,4 @@ return {
     vim.cmd.colorscheme 'rose-pine'
     vim.cmd.hi 'Comment gui=none'
   end,
-  opts = {
-    styles = {
-      transparency = true,
-    },
-  },
 }
