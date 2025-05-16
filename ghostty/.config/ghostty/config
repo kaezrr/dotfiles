@@ -1,4 +1,5 @@
 font-family = "JetBrainsMono Nerd Font"
 font-size = 13
 theme = rose-pine
-confirm-surface-close = false
+background-opacity = 0.8
+background-blur = true
