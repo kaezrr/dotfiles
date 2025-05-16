@@ -9,10 +9,9 @@
   },
   "modules": [
     {
-      "type": "command",
-      "key": "  ",
-      "keyColor": "blue",
-      "text": "splash=$(hyprctl splash);echo $splash",
+      "type": "title",
+      "key": "  ",
+      "format": "{6} {7} {8}",
     },
     {
       "type": "custom",
@@ -57,20 +56,7 @@
       "format": "{2}",
       "keyColor": "yellow",
     },
-    {
-      "type": "custom",
-      "format": "└──────────────────────────────────────────┘",
-    },
     "break",
-    {
-      "type": "title",
-      "key": "  ",
-      "format": "{6} {7} {8}",
-    },
-    {
-      "type": "custom",
-      "format": "┌──────────────────────────────────────────┐",
-    },
     {
       "type": "cpu",
       "format": "{1} @ {7}",
