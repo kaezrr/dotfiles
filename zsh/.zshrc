@@ -18,6 +18,7 @@ export PAGER="bat"
 export EDITOR="nvim"
 export VISUAL="nvim"
 export MANPAGER="nvim +Man!"
+export TERMINAL="ghostty"
 export DATABASE_PASSWORD="1221"
 export NVM_COMPLETION=true
 
@@ -80,10 +81,9 @@ alias gc="git commit"
 alias ga="git add"
 alias gs="git status"
 
+# Fans
+alias cool="sudo $HOME/dotfiles/scripts/cool"
+
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
 eval "$(zoxide init --cmd cd zsh)"
-
-yank() {
-  cat "$1" | clip.exe
-}
