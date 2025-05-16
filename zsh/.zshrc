@@ -18,7 +18,7 @@ export PAGER="bat"
 export EDITOR="nvim"
 export VISUAL="nvim"
 export MANPAGER="nvim +Man!"
-export TERMINAL="ghostty"
+export TERMINAL="kitty"
 export DATABASE_PASSWORD="1221"
 export NVM_COMPLETION=true
 
