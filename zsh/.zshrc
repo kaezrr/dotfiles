@@ -13,7 +13,7 @@ if [ ! -d "$ZINIT_HOME" ]; then
 fi
 
 # Environment variables
-export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
 export PAGER="bat"
 export EDITOR="nvim"
 export VISUAL="nvim"
