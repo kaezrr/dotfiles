@@ -117,7 +117,7 @@ return {
         program = function()
           return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
         end,
-        cwd = '${workspaceFolder}/src',
+        cwd = '${workspaceFolder}',
         stopOnEntry = false,
       },
     }
