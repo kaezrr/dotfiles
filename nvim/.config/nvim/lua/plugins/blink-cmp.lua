@@ -2,7 +2,9 @@ return {
   'saghen/blink.cmp',
   event = 'InsertEnter',
   -- optional: provides snippets for the snippet source
-  dependencies = { 'rafamadriz/friendly-snippets' },
+  dependencies = {
+    'rafamadriz/friendly-snippets',
+  },
 
   -- use a release tag to download pre-built binaries
   version = '1.*',
@@ -37,7 +39,7 @@ return {
     completion = {
       documentation = {
         auto_show = true,
-        treesitter_highlighting = true,
+        auto_show_delay_ms = 500,
       },
       menu = {
         draw = {

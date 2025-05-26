@@ -35,10 +35,11 @@ return {
       -- },
     }
 
-    -- Enhanced capabilities from blink.cmp
-    local capabilities = require('blink.cmp').get_lsp_capabilities()
-
     -- Define LSP server configurations
+    vim.lsp.config['clangd'] = {
+      cmd = { 'clangd', '--header-insertion=never' },
+    }
+
     vim.lsp.config['rust_analyzer'] = {
       settings = {
         ['rust-analyzer'] = {

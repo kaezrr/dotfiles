@@ -28,3 +28,20 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 
 vim.keymap.set('n', '<leader>w', ':update<CR>', { desc = 'Save file', silent = true })
 vim.keymap.set('n', '<leader>q', ':q<CR>', { desc = 'Close file', silent = true })
+
+-- Moving throught snippets
+vim.keymap.set({ 'i', 's' }, '<C-l>', function()
+  if vim.snippet.active { direction = 1 } then
+    return '<Cmd>lua vim.snippet.jump(1)<CR>'
+  else
+    return ''
+  end
+end, { desc = 'Snippet Next', expr = true, silent = true })
+
+vim.keymap.set({ 'i', 's' }, '<C-h>', function()
+  if vim.snippet.active { direction = -1 } then
+    return '<Cmd>lua vim.snippet.jump(-1)<CR>'
+  else
+    return ''
+  end
+end, { desc = 'Snippet Prev', expr = true, silent = true })
