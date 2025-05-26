@@ -133,9 +133,7 @@ return {
       vim.api.nvim_create_autocmd('User', {
         once = true,
         pattern = 'AlphaReady',
-        callback = function()
-          require('lazy').show()
-        end,
+        callback = function() require('lazy').show() end,
       })
     end
 

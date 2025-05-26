@@ -10,9 +10,7 @@ return {
   keys = {
     {
       '<leader>st',
-      function()
-        Snacks.picker.todo_comments()
-      end,
+      function() Snacks.picker.todo_comments() end,
       desc = '[S]earch [T]odos',
     },
   },

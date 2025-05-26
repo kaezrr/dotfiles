@@ -8,9 +8,7 @@ return {
   keys = {
     {
       '<leader>tm',
-      function()
-        require('render-markdown').buf_toggle()
-      end,
+      function() require('render-markdown').buf_toggle() end,
       desc = '[T]oggle [M]arkdown',
     },
   },

@@ -39,12 +39,6 @@ return {
     local capabilities = require('blink.cmp').get_lsp_capabilities()
 
     -- Define LSP server configurations
-    vim.lsp.config['clangd'] = {
-      capabilities = vim.tbl_deep_extend('force', capabilities, {
-        offsetEncoding = { 'utf-16' },
-      }),
-    }
-
     vim.lsp.config['rust_analyzer'] = {
       settings = {
         ['rust-analyzer'] = {
@@ -148,9 +142,7 @@ return {
         end
 
         if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
-          map('<leader>th', function()
-            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
-          end, '[T]oggle Inlay [H]ints')
+          map('<leader>th', function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf }) end, '[T]oggle Inlay [H]ints')
         end
       end,
     })
