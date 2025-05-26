@@ -66,14 +66,13 @@ bindkey '^Y' autosuggest-accept
 # Aliases
 alias vi="nvim"
 alias vim="nvim"
-alias ll="lsd -l --date relative --group-dirs first"
+alias ll="lsd -lA --date relative --group-dirs first"
 alias cat="bat"
 
 # Configs
 alias zshconfig="nvim ~/.zshrc"
 alias reload="exec zsh"
 alias nvil='NVIM_APPNAME=nvim-lab nvim'
-alias nvik='NVIM_APPNAME=nvim-kick nvim'
 
 # Git 
 alias gpo="git push origin"

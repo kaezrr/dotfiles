@@ -7,16 +7,14 @@
 --
 --    Courtesy of kickstart.nvim !!!
 
--- Set <space> as the leader key
--- NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
-
 -- [[ Setting options ]]
 require 'config.options'
 
 -- [[ Basic and high powered keybinds ]]
 require 'config.keybinds'
+
+-- [[ Auto commands ]]
+require 'config.autocmd'
 
 -- [[ Bootstrap Lazy package manager and install plugins ]]
 require 'config.lazy'
