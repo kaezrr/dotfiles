@@ -1,5 +1,6 @@
 return {
   'saghen/blink.cmp',
+  event = 'InsertEnter',
   -- optional: provides snippets for the snippet source
   dependencies = { 'rafamadriz/friendly-snippets' },
 
@@ -34,7 +35,10 @@ return {
     },
 
     completion = {
-      documentation = { auto_show = true, treesitter_highlighting = true },
+      documentation = {
+        auto_show = true,
+        treesitter_highlighting = true,
+      },
       menu = {
         draw = {
           components = {

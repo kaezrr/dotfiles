@@ -1,10 +1,11 @@
 return {
   -- Main LSP Configuration
   'neovim/nvim-lspconfig',
+  event = { 'BufReadPost', 'BufWritePost', 'BufNewFile' },
   dependencies = {
     -- Mason for managing external tools
     { 'williamboman/mason.nvim', opts = {} },
-    'williamboman/mason-lspconfig.nvim',
+    { 'williamboman/mason-lspconfig.nvim', opts = { automatic_enable = false } },
     'WhoIsSethDaniel/mason-tool-installer.nvim',
     -- Completion capabilities
     'saghen/blink.cmp',
@@ -23,13 +24,14 @@ return {
           [vim.diagnostic.severity.HINT] = '󰌶 ',
         },
       } or {},
-      virtual_text = {
-        source = 'if_many',
-        spacing = 2,
-        format = function(diagnostic)
-          return diagnostic.message
-        end,
-      },
+      -- Disable virtual text because tiny-inline-diagnostic will show them instead
+      virtual_text = false,
+      -- virtual_text = { source = 'if_many',
+      --   spacing = 2,
+      --   format = function(diagnostic)
+      --     return diagnostic.message
+      --   end,
+      -- },
     }
 
     -- Enhanced capabilities from blink.cmp

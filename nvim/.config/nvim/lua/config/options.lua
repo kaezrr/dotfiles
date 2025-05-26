@@ -25,8 +25,4 @@ vim.opt.scrolloff = 8
 vim.opt.fillchars = { eob = ' ' }
 vim.opt.confirm = true
 vim.opt.tabstop = 4
-
--- Sync clipboard between OS and Neovim.
-vim.schedule(function()
-  vim.opt.clipboard = 'unnamedplus'
-end)
+vim.opt.clipboard = 'unnamedplus'

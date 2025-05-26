@@ -22,6 +22,10 @@ return { -- Fuzzy Finder (files, lsp, etc)
   ---@type snacks.Config
   opts = {
     picker = {},
+    notifier = {
+      enabled = true,
+      timeout = 3000,
+    },
   },
 
   -- See `:help snacks-pickers-sources`
