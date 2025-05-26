@@ -24,5 +24,12 @@ vim.opt.cursorline = true
 vim.opt.scrolloff = 8
 vim.opt.fillchars = { eob = ' ' }
 vim.opt.confirm = true
+
+-- Indent defaults
 vim.opt.tabstop = 4
+vim.opt.expandtab = true
+vim.opt.shiftwidth = 4
+vim.opt.softtabstop = 4
+
+-- Sync clipboard with OS
 vim.opt.clipboard = 'unnamedplus'
