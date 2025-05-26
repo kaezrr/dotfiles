@@ -22,7 +22,7 @@ vim.api.nvim_create_autocmd('LspProgress', {
 })
 
 vim.api.nvim_create_autocmd('FileType', {
-  pattern = { 'javascript', 'typescript', 'html', 'javascriptreact', 'typescriptreact' },
+  pattern = { 'javascript', 'typescript', 'html', 'javascriptreact', 'typescriptreact', 'css' },
   callback = function()
     vim.bo.shiftwidth = 2
     vim.bo.tabstop = 2

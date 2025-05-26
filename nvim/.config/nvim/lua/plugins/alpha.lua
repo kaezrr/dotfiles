@@ -106,7 +106,7 @@ return {
 
     dashboard.section.buttons.val = {
       dashboard.button('f', ' ' .. ' Find file', '<cmd>lua Snacks.picker.smart()<cr>'),
-      dashboard.button('r', ' ' .. ' Recent files', '<cmd>lua Snacks.picker.recent()<cr>'),
+      dashboard.button('g', ' ' .. ' Grep files', '<cmd>lua Snacks.picker.grep()<cr>'),
       dashboard.button('c', ' ' .. ' Config', "<cmd>lua Snacks.picker.files { cwd = vim.fn.stdpath 'config' }<cr>"),
       dashboard.button('l', '󰒲 ' .. ' Lazy', '<cmd>Lazy<cr>'),
       dashboard.button('q', ' ' .. ' Quit', '<cmd>qa<cr>'),
