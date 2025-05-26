@@ -22,7 +22,26 @@ require('lazy').setup {
     { import = 'plugins' },
   },
   -- automatically check for plugin updates
-  checker = { enabled = false },
+  install = { colorscheme = { 'rose-pine' } },
+  checker = {
+    enabled = true,
+    notify = false,
+  },
+  performance = {
+    rtp = {
+      -- disable some rtp plugins
+      disabled_plugins = {
+        'gzip',
+        -- "matchit",
+        -- "matchparen",
+        'netrwPlugin',
+        'tarPlugin',
+        'tohtml',
+        'tutor',
+        'zipPlugin',
+      },
+    },
+  },
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
     -- default lazy.nvim defined Nerd Font icons, otherwise define a unicode icons table

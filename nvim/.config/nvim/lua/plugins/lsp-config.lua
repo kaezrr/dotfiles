@@ -2,6 +2,7 @@ return {
   -- Main LSP Configuration
   'neovim/nvim-lspconfig',
   event = { 'BufReadPost', 'BufWritePost', 'BufNewFile' },
+  cmd = { 'LspInfo', 'Mason' },
   dependencies = {
     -- Mason for managing external tools
     { 'williamboman/mason.nvim', opts = {} },
