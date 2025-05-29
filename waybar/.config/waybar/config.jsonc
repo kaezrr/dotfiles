@@ -4,8 +4,8 @@
   "height": 30,
   "spacing": 1,
   "margin": 0,
-  "modules-left": ["niri/workspaces", "niri/window"],
-  "modules-center": ["clock", "idle_inhibitor"],
+  "modules-left": ["niri/workspaces", "idle_inhibitor"],
+  "modules-center": ["clock"],
   "modules-right": [
     "pulseaudio",
     "backlight",
@@ -24,10 +24,6 @@
       "active": "",
       "default": "",
     },
-  },
-
-  "niri/window": {
-    "format": "{title}",
   },
 
   "idle_inhibitor": {

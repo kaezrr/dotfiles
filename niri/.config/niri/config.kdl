@@ -101,9 +101,11 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     Mod+T hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
-    Mod+D hotkey-overlay-title="Open Application Launcher" { spawn "fuzzel"; }
-    Mod+B hotkey-overlay-title="Open Browser" { spawn "zen-browser"; }
-    Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
+    Alt+Space hotkey-overlay-title="Open Application Launcher" { spawn "fuzzel"; }
+    Mod+Z hotkey-overlay-title="Open Browser" { spawn "zen-browser"; }
+
+    Super+Alt+L hotkey-overlay-title="Lock the Screen" { spawn "swaylock"; }
+    Super+X hotkey-overlay-title="Show Powermenu" {spawn "~/dotfiles/scripts/powermenu.sh"; }
 
     XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
     XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }

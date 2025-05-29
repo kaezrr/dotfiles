@@ -217,13 +217,3 @@ window#waybar {
   color: @red;
   border-bottom-color: @red;
 }
-
-#window {
-  color: @mpd-color;
-  border-bottom-color: @mpd-color;
-}
-
-window#waybar.empty #window {
-  background-color: transparent;
-  border-bottom-color: transparent;
-}
