@@ -1,3 +1,12 @@
+spawn-at-startup "xwayland-satellite"
+spawn-at-startup "nm-applet"
+spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
+
+environment {
+    ELECTRON_OZONE_PLATFORM_HINT "auto"
+    DISPLAY ":0"
+}
+
 input {
     keyboard {
         xkb {
@@ -43,6 +52,7 @@ layout {
     }
 
     default-column-width { proportion 0.5; }
+
     focus-ring {
         width 2
         active-color "#7fc8ff"
@@ -75,12 +85,17 @@ animations {
 }
 
 window-rule {
-    match app-id=r#"^org\.wezfurlong\.wezterm$"#
-    default-column-width {}
+    match app-id=r#"kitty$"#
+    default-column-width { proportion 1.0; }
 }
 
 window-rule {
-    match app-id=r#"zen-browser$"# title="^Picture-in-Picture$"
+    match app-id=r#"zen.*$"#
+    default-column-width { proportion 1.0; }
+}
+
+window-rule {
+    match app-id=r#"zen-bin$"# title="^Picture-in-Picture$"
     open-floating true
 }
 
@@ -103,9 +118,11 @@ binds {
     Mod+T hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
     Alt+Space hotkey-overlay-title="Open Application Launcher" { spawn "fuzzel"; }
     Mod+Z hotkey-overlay-title="Open Browser" { spawn "zen-browser"; }
+    Mod+E hotkey-overlay-title="Open Explorer" { spawn "dolphin"; }
 
     Super+Alt+L hotkey-overlay-title="Lock the Screen" { spawn "swaylock"; }
     Super+X hotkey-overlay-title="Show Powermenu" {spawn "~/dotfiles/scripts/powermenu.sh"; }
+    Super+V hotkey-overlay-title="Show Clipboard" {spawn "~/dotfiles/scripts/clipboard.sh"; }
 
     XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
     XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
@@ -173,15 +190,15 @@ binds {
     Mod+7 { focus-workspace 7; }
     Mod+8 { focus-workspace 8; }
     Mod+9 { focus-workspace 9; }
-    Mod+Ctrl+1 { move-column-to-workspace 1; }
-    Mod+Ctrl+2 { move-column-to-workspace 2; }
-    Mod+Ctrl+3 { move-column-to-workspace 3; }
-    Mod+Ctrl+4 { move-column-to-workspace 4; }
-    Mod+Ctrl+5 { move-column-to-workspace 5; }
-    Mod+Ctrl+6 { move-column-to-workspace 6; }
-    Mod+Ctrl+7 { move-column-to-workspace 7; }
-    Mod+Ctrl+8 { move-column-to-workspace 8; }
-    Mod+Ctrl+9 { move-column-to-workspace 9; }
+    Mod+Shift+1 { move-column-to-workspace 1; }
+    Mod+Shift+2 { move-column-to-workspace 2; }
+    Mod+Shift+3 { move-column-to-workspace 3; }
+    Mod+Shift+4 { move-column-to-workspace 4; }
+    Mod+Shift+5 { move-column-to-workspace 5; }
+    Mod+Shift+6 { move-column-to-workspace 6; }
+    Mod+Shift+7 { move-column-to-workspace 7; }
+    Mod+Shift+8 { move-column-to-workspace 8; }
+    Mod+Shift+9 { move-column-to-workspace 9; }
 
     Mod+BracketLeft  { consume-or-expel-window-left; }
     Mod+BracketRight { consume-or-expel-window-right; }
@@ -206,8 +223,8 @@ binds {
     Mod+Shift+Minus { set-window-height "-10%"; }
     Mod+Shift+Equal { set-window-height "+10%"; }
 
-    Mod+V       { toggle-window-floating; }
-    Mod+Shift+V { switch-focus-between-floating-and-tiling; }
+    Mod+M       { toggle-window-floating; }
+    Mod+Shift+M { switch-focus-between-floating-and-tiling; }
 
     Mod+W { toggle-column-tabbed-display; }
 
