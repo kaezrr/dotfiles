@@ -1,0 +1,229 @@
+/*Colorschemes, there are Gruvbox, Tokyo Night, and Everforest by default. The way it works is whichever colorscheme section is defined last will be used. Here everforest is last, but put any one you want to use as the last one.*/
+
+/* Tokyo Night */
+@define-color background #1a1b26;
+@define-color background-light #24283b;
+@define-color foreground #c0caf5;
+@define-color black #15161e;
+@define-color red #f7768e;
+@define-color green #9ece6a;
+@define-color yellow #e0af68;
+@define-color blue #7aa2f7;
+@define-color magenta #bb9af7;
+@define-color cyan #7dcfff;
+@define-color white #a9b1d6;
+@define-color orange #ff9e64;
+
+/* Module-specific colors */
+@define-color workspaces-color @foreground;
+@define-color workspaces-focused-bg @green;
+@define-color workspaces-focused-fg @cyan;
+@define-color workspaces-urgent-bg @red;
+@define-color workspaces-urgent-fg @black;
+
+/* Text and border colors for modules */
+@define-color mode-color @orange;
+@define-color mpd-color @magenta;
+@define-color weather-color @magenta;
+@define-color playerctl-color @magenta;
+@define-color clock-color @blue;
+@define-color cpu-color @green;
+@define-color memory-color @magenta;
+@define-color temperature-color @yellow;
+@define-color temperature-critical-color @red;
+@define-color battery-color @cyan;
+@define-color battery-charging-color @green;
+@define-color battery-warning-color @yellow;
+@define-color battery-critical-color @red;
+@define-color network-color @blue;
+@define-color network-disconnected-color @red;
+@define-color pulseaudio-color @orange;
+@define-color pulseaudio-muted-color @red;
+@define-color backlight-color @yellow;
+@define-color disk-color @cyan;
+@define-color uptime-color @green;
+@define-color updates-color @orange;
+@define-color quote-color @green;
+@define-color idle-inhibitor-color @foreground;
+@define-color idle-inhibitor-active-color @red;
+
+* {
+  /* Base styling for all modules */
+  border: none;
+  border-radius: 0;
+  font-family: "JetBrainsMono Nerd Font";
+  font-size: 12pt;
+  min-height: 0;
+}
+
+window#waybar {
+  background-color: @background;
+  color: @foreground;
+}
+
+/* Common module styling with border-bottom */
+#mpd,
+#clock,
+#cpu,
+#memory,
+#temperature,
+#battery,
+#network,
+#pulseaudio,
+#backlight,
+#idle_inhibitor,
+#window,
+#tray {
+  padding: 0 10px;
+  margin: 0 2px;
+  border-bottom: 2px solid transparent;
+  background-color: transparent;
+}
+
+/* Workspaces styling */
+#workspaces button {
+  padding: 0 10px;
+  background-color: transparent;
+  color: @workspaces-color;
+  margin: 0;
+}
+
+#workspaces button:hover {
+  background: @background-light;
+  box-shadow: inherit;
+}
+
+#workspaces button.focused {
+  box-shadow: inset 0 -2px @workspaces-focused-fg;
+  color: @workspaces-focused-fg;
+  font-weight: 900;
+}
+
+#workspaces button.urgent {
+  background-color: @workspaces-urgent-bg;
+  color: @workspaces-urgent-fg;
+}
+
+/* Module-specific styling */
+#mpd {
+  color: @mpd-color;
+  border-bottom-color: @mpd-color;
+}
+
+#mpd.disconnected,
+#mpd.stopped {
+  color: @foreground;
+  border-bottom-color: transparent;
+}
+
+#clock {
+  color: @clock-color;
+  border-bottom-color: @clock-color;
+}
+
+#cpu {
+  color: @cpu-color;
+  border-bottom-color: @cpu-color;
+}
+
+#memory {
+  color: @memory-color;
+  border-bottom-color: @memory-color;
+}
+
+#temperature {
+  color: @temperature-color;
+  border-bottom-color: @temperature-color;
+}
+
+#temperature.critical {
+  color: @temperature-critical-color;
+  border-bottom-color: @temperature-critical-color;
+}
+
+#battery {
+  color: @battery-color;
+  border-bottom-color: @battery-color;
+}
+
+#battery.charging,
+#battery.plugged {
+  color: @battery-charging-color;
+  border-bottom-color: @battery-charging-color;
+}
+
+#battery.warning:not(.charging) {
+  color: @battery-warning-color;
+  border-bottom-color: @battery-warning-color;
+}
+
+#battery.critical:not(.charging) {
+  color: @battery-critical-color;
+  border-bottom-color: @battery-critical-color;
+}
+
+#network {
+  color: @network-color;
+  border-bottom-color: @network-color;
+}
+
+#network.disconnected {
+  color: @network-disconnected-color;
+  border-bottom-color: @network-disconnected-color;
+}
+
+#pulseaudio {
+  color: @pulseaudio-color;
+  border-bottom-color: @pulseaudio-color;
+}
+
+#pulseaudio.muted {
+  color: @pulseaudio-muted-color;
+  border-bottom-color: @pulseaudio-muted-color;
+}
+
+#backlight {
+  color: @backlight-color;
+  border-bottom-color: @backlight-color;
+}
+
+#disk {
+  color: @disk-color;
+  border-bottom-color: @disk-color;
+}
+
+#idle_inhibitor {
+  color: @idle-inhibitor-color;
+  border-bottom-color: transparent;
+}
+
+#idle_inhibitor.activated {
+  color: @idle-inhibitor-active-color;
+  border-bottom-color: @idle-inhibitor-active-color;
+}
+
+#tray {
+  background-color: transparent;
+  padding: 0 10px;
+  margin: 0 2px;
+}
+
+#tray > .passive {
+  -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+  -gtk-icon-effect: highlight;
+  color: @red;
+  border-bottom-color: @red;
+}
+
+#window {
+  color: @mpd-color;
+  border-bottom-color: @mpd-color;
+}
+
+window#waybar.empty #window {
+  background-color: transparent;
+  border-bottom-color: transparent;
+}
