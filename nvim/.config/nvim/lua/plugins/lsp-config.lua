@@ -61,6 +61,17 @@ return {
       },
     }
 
+    vim.lsp.config['cssls'] = {
+      settings = {
+        css = {
+          validate = true,
+          lint = {
+            unknownAtRules = 'ignore',
+          },
+        },
+      },
+    }
+
     -- Enable the configured servers
     vim.lsp.enable {
       'clangd',
