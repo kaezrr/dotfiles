@@ -81,7 +81,7 @@ alias ga="git add"
 alias gs="git status"
 
 # Fans
-alias cool="sudo $HOME/dotfiles/scripts/cool"
+alias cool="sudo $HOME/dotfiles/scripts/cool.sh"
 
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
