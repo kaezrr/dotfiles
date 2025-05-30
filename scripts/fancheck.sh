@@ -17,7 +17,7 @@ fi
 jq --unbuffered --compact-output -n \
   --arg text "Proc: ${proc_rpm} RPM, Mobo: ${mobo_rpm} RPM" \
   --arg alt "$status" \
-  --arg tooltip "Processor Fan: ${proc_rpm} RPM\rMotherboard Fan: ${mobo_rpm} RPM" \
+  --arg tooltip "CPU Fan: ${proc_rpm} RPM&#10;GPU Fan: ${mobo_rpm} RPM" \
   --arg class "$status" \
   '{
     text: $text,
