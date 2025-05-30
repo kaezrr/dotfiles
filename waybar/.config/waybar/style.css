@@ -31,6 +31,7 @@ tooltip {
 #language,
 #backlight,
 #temperature,
+#custom-fans,
 #network,
 #pulseaudio {
   margin: 6px 6px 6px 0px;
@@ -72,10 +73,11 @@ tooltip {
 
 #battery,
 #battery.charging,
-#battery.plugged {
+#battery.plugged,
+#custom-fans.on {
   background-color: #191724; /* was @pine */
-  border: 2px solid #f6c177; /* was @gold */
-  color: #f6c177; /* was @base */
+  border: 2px solid #a7c080; /* was @gold */
+  color: #a7c080; /* was @base */
 }
 
 #cpu,
@@ -92,7 +94,9 @@ tooltip {
 
 #cpu.critical,
 #memory.critical,
-#temperature.critical {
+#temperature.critical,
+#custom-fans.off,
+#custom-fans {
   background-color: #191724; /* was @gold */
   border: 2px solid #eb6f92; /* was @subtle */
   color: #eb6f92; /* was @love */

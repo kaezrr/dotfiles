@@ -9,7 +9,13 @@
     "temperature",
   ],
   "modules-center": ["clock", "tray"],
-  "modules-right": ["backlight", "pulseaudio", "network", "battery"],
+  "modules-right": [
+    "custom/fans",
+    "backlight",
+    "pulseaudio",
+    "network",
+    "battery",
+  ],
 
   "hyprland/workspaces": {
     "on-click": "activate",
@@ -115,5 +121,16 @@
     "critical-threshold": 80,
     "format": "{icon} {temperatureC}°C",
     "format-icons": ["󱃃", "󰔏", "󱃂"],
+  },
+
+  "custom/fans": {
+    "exec": "/home/kaezr/dotfiles/scripts/fancheck.sh",
+    "format": "Fans {icon} ",
+    "format-icons": {
+      "on": "",
+      "off": "󰠝",
+    },
+    "interval": 5,
+    "return-type": "json",
   },
 }
