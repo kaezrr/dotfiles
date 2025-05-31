@@ -130,6 +130,8 @@
       "on": "",
       "off": "󰠝",
     },
+    "on-click": "sudo /home/kaezr/dotfiles/scripts/cool.sh on",
+    "on-click-right": "sudo /home/kaezr/dotfiles/scripts/cool.sh off",
     "interval": 5,
     "return-type": "json",
   },
