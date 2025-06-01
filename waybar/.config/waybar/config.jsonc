@@ -106,13 +106,13 @@
   },
 
   "cpu": {
-    "format": "󰘚 {usage}%",
+    "format": "󰍛 {usage}%",
     "tooltip": true,
     "interval": 1,
   },
 
   "memory": {
-    "format": "󰍛 {}%",
+    "format": "󰘚 {}%",
     "interval": 1,
   },
 
