@@ -1,7 +1,8 @@
-choice=$(echo -e "󰐥 Shutdown\n󰜉 Reboot\n󰍃 Logout\n Lock Screen" | fuzzel --dmenu)
+choice=$(echo -e "󰐥 Shutdown\n󰜉 Reboot\n󰍃 Logout\n󰌾 Lock\n󰤄 Sleep" | fuzzel --dmenu)
 case "$choice" in
   "󰐥 Shutdown") systemctl poweroff ;;
   "󰜉 Reboot") systemctl reboot ;;
   "󰍃 Logout") hyprctl dispatch exit ;;
-  " Lock Screen") hyprlock ;;
+  "󰌾 Lock") hyprlock ;;
+  "󰤄 Sleep") systemctl suspend ;;
 esac
