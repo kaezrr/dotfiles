@@ -57,7 +57,7 @@ tooltip {
 }
 
 #workspaces button.urgent {
-  background-color: #eb6f92; /* was @love */
+  color: #eb6f92; /* was @love */
 }
 
 #clock {

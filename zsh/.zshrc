@@ -19,7 +19,6 @@ export EDITOR="nvim"
 export VISUAL="nvim"
 export MANPAGER="nvim +Man!"
 export TERMINAL="kitty"
-export HYPRSHOT_DIR="$HOME/Pictures/Screenshots/"
 export DATABASE_PASSWORD="1221"
 export NVM_COMPLETION=true
 
