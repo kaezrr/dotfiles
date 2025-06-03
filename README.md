@@ -47,11 +47,3 @@ stow nvim zsh tmux kitty hypr waybar dunst fuzzel
 ```
 
 3. Make sure all dependencies are installed (Hyprland, kitty, dunst, etc.).
-
-## 📸 Screenshots
-
-
-
-## 🤝 License
-
-These dotfiles are shared under the MIT License. Feel free to fork and adapt to your needs or anything else.
