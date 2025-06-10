@@ -19,7 +19,6 @@ export EDITOR="nvim"
 export VISUAL="nvim"
 export MANPAGER="nvim +Man!"
 export TERMINAL="kitty"
-export DATABASE_PASSWORD="1221"
 export NVM_COMPLETION=true
 
 source "${ZINIT_HOME}/zinit.zsh"
@@ -79,9 +78,6 @@ alias gpo="git push origin"
 alias gc="git commit"
 alias ga="git add"
 alias gs="git status"
-
-# Fans
-alias cool="sudo $HOME/dotfiles/scripts/cool.sh"
 
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
