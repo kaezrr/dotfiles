@@ -65,7 +65,7 @@ bindkey '^Y' autosuggest-accept
 # Aliases
 alias vi="nvim"
 alias vim="nvim"
-alias ll="lsd -lA --date relative --group-dirs first"
+alias ll="eza -l --icons"
 alias cat="bat"
 
 # Configs
