@@ -124,7 +124,7 @@
   },
 
   "custom/fans": {
-    "exec": "/home/kaezr/dotfiles/scripts/fancheck.sh",
+    "exec": "/home/kaezr/scripts/fancheck.sh",
     "format": "Fans {icon} ",
     "format-icons": {
       "on": "",
