@@ -1,0 +1,7 @@
+[user]
+	name = Anjishnu Banerjee
+	email = inviktor27@gmail.com
+[init]
+	defaultBranch = main
+[pull]
+	rebase = false
