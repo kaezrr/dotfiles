@@ -67,6 +67,7 @@ alias vi="nvim"
 alias vim="nvim"
 alias ll="eza -l --icons=auto"
 alias cat="bat"
+alias cz="chezmoi"
 
 # Configs
 alias zshconfig="nvim ~/.zshrc"
