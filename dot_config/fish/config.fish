@@ -12,6 +12,7 @@ set -gx NVM_COMPLETION true
 # Aliases
 alias vi "nvim"
 alias ll "eza -l --icons=auto"
+alias la "eza -lA --icons=auto"
 alias cat "bat"
 alias cz "chezmoi"
 
