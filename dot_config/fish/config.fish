@@ -8,20 +8,13 @@ set -gx VISUAL nvim
 set -gx MANPAGER 'nvim +Man!'
 set -gx TERMINAL kitty
 set -gx NVM_COMPLETION true
+set -g fish_greeting
 
 # Aliases
 alias vi "nvim"
-alias ll "eza -l --icons=auto"
-alias la "eza -lA --icons=auto"
+alias ll "eza -l --icons=auto --group-directories-first"
+alias la "eza -lA --icons=auto --group-directories-first"
 alias cat "bat"
-alias cz "chezmoi"
-
-# Git aliases
-alias gpo "git push origin"
-alias gc "git commit"
-alias ga "git add"
-alias gs "git status"
-alias gd "git diff"
 
 # zoxide initialization
 zoxide init fish --cmd cd | source

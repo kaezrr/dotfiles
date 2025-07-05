@@ -28,7 +28,7 @@ tooltip {
 #cpu,
 #memory,
 #battery,
-#language,
+#power-profiles-daemon,
 #backlight,
 #temperature,
 #custom-fans,
@@ -83,7 +83,7 @@ tooltip {
 #cpu,
 #memory,
 #network,
-#language,
+#power-profiles-daemon,
 #backlight,
 #temperature,
 #pulseaudio {

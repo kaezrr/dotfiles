@@ -3,7 +3,7 @@
   "reload_style_on_change": true,
   "modules-left": [
     "hyprland/workspaces",
-    "hyprland/language",
+    "power-profiles-daemon",
     "cpu",
     "memory",
     "temperature",
@@ -26,9 +26,16 @@
     },
   },
 
-  "hyprland/language": {
-    "format": "󰌌 {}",
-    "keyboard-name": "at-translated-set-2-keyboard",
+  "power-profiles-daemon": {
+    "format": "{icon}  {profile}",
+    "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+    "tooltip": true,
+    "format-icons": {
+      "default": "",
+      "performance": "",
+      "balanced": "",
+      "power-saver": "",
+    },
   },
 
   "clock": {
