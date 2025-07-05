@@ -131,7 +131,7 @@
   },
 
   "custom/fans": {
-    "exec": "/home/kaezr/scripts/fancheck.sh",
+    "exec": "$HOME/.config/scripts/fancheck.sh",
     "format": "Fans {icon} ",
     "format-icons": {
       "on": "",
