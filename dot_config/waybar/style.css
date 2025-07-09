@@ -32,6 +32,7 @@ tooltip {
 #backlight,
 #temperature,
 #custom-fans,
+#custom-notification,
 #network,
 #pulseaudio {
   margin: 6px 6px 6px 0px;
@@ -84,6 +85,7 @@ tooltip {
 #memory,
 #network,
 #power-profiles-daemon,
+#custom-notification,
 #backlight,
 #temperature,
 #pulseaudio {
