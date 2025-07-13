@@ -1,4 +1,4 @@
-fish_config theme choose "Rosé Pine"
+fish_config theme choose "kanagawa"
 
 # Set environment variables
 set -gx PATH $HOME/.local/bin $HOME/.cargo/bin $PATH
