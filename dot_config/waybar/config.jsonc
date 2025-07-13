@@ -8,7 +8,8 @@
   "margin-right": 16,
 
   "modules-left": [
-    "group/tray",
+    "custom/notification",
+    "tray",
     "custom/spacer",
     "hyprland/workspaces",
     "custom/spacer",
@@ -39,17 +40,6 @@
     },
     "interval": 5,
     "return-type": "json",
-  },
-
-  "group/tray": {
-    "orientation": "horizontal",
-    "drawer": {
-      "transition-duration": "500",
-      "transition-left-to-right": "true",
-      "children-class": "drawer-child",
-      //"click-to-reveal": "false"
-    },
-    "modules": ["custom/notification", "tray"],
   },
 
   "backlight": {

@@ -1,9 +1,9 @@
 return {
-  'rose-pine/neovim',
-  name = 'rose-pine',
+  'rebelot/kanagawa.nvim',
+  name = 'kanagawa',
   priority = 1000,
   init = function()
-    vim.cmd.colorscheme 'rose-pine'
+    vim.cmd.colorscheme 'kanagawa-wave'
     vim.cmd.hi 'Comment gui=none'
   end,
 }
