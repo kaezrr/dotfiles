@@ -1,22 +1,43 @@
 # .files
 
-Personal dotfiles for a minimal and highly customizable Linux setup, optimized for [Hyprland](https://github.com/hyprwm/Hyprland) and Wayland-based environments.
-<br>
-![2025-05-31-210726_hyprshot](https://github.com/user-attachments/assets/e1b548ef-a126-4797-b5f1-90ad874f99d0)
+Personal dotfiles for a minimal and highly customized Linux setup, built around [Hyprland](https://github.com/hyprwm/Hyprland), Wayland-native tools, and the **Kanagawa** colorscheme.  
+This rice tries to focus a lot on minimalism, performance and efficiency as much as reasonable. I hope you like it
+
+---
+
+## 📸 Screenshots
+
+![wallpaper](/Pictures/screenshots/showcase1.png)
+![workflow](/Pictures/screenshots/showcase2.png)
+![gaming_misc](/Pictures/screenshots/showcase3.png)
+![notif_launcher](/Pictures/screenshots/showcase4.png)
+
+---
 
 ## 🧩 Components
 
-This repo contains config files for various tools I use on a daily basis:
+These dotfiles configure the tools I use daily:
 
-| Folder      | Purpose                                                  |
-| ----------- | -------------------------------------------------------- |
-| `dunst`     | Lightweight and minimal notification daemon              |
-| `fastfetch` | System information fetcher (blazing-fast neofetch)       |
-| `fuzzel`    | Wayland application launcher (like rofi for wlroots)     |
-| `hypr`      | [Hyprland](https://github.com/hyprwm/Hyprland) WM config |
-| `kitty`     | GPU-based terminal emulator                              |
-| `nvim`      | Neovim config (my IDE replacement)                       |
-| `scripts`   | Custom scripts and helpers used throughout the system    |
-| `tmux`      | Terminal multiplexer configuration                       |
-| `waybar`    | Status bar for Wayland                                   |
-| `zsh`       | Z shell and plugin configuration                         |
+| App         | Purpose                                               |
+| ----------- | ----------------------------------------------------- |
+| `fastfetch` | Blazing-fast neofetch alternative                     |
+| `fish`      | Friendly interactive shell with theme + plugin setup  |
+| `fuzzel`    | Application launcher for wlroots (like rofi)          |
+| `hypr`      | [Hyprland](https://github.com/hyprwm/Hyprland) config |
+| `kitty`     | GPU-accelerated terminal emulator                     |
+| `nvim`      | Full-featured Neovim setup (IDE-lite)                 |
+| `scripts`   | Custom helper scripts (runners, toggles, etc.)        |
+| `swaync`    | Wayland-compatible notification center                |
+| `tmux`      | Terminal multiplexer with sensible bindings           |
+| `waybar`    | Custom Wayland status bar with modules and styling    |
+
+---
+
+## ⚙️ Installation
+
+All my dotfiles are managed through [chezmoi](https://www.chezmoi.io/). The following set of commands is the quickest way to try out this configuration!
+
+```bash
+chezmoi init kaezrr
+chezmoi apply
+```
