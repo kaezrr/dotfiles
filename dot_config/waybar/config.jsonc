@@ -1,74 +1,138 @@
 {
+  // MAIN BAR //
   "layer": "top",
-  "reload_style_on_change": true,
+  "position": "top",
+  "name": "main",
+
+  "margin-left": 16,
+  "margin-right": 16,
+
   "modules-left": [
+    "group/tray",
+    "custom/spacer",
     "hyprland/workspaces",
-    "power-profiles-daemon",
-    "cpu",
-    "memory",
-    "temperature",
+    "custom/spacer",
   ],
-  "modules-center": ["clock", "tray"],
+
   "modules-right": [
-    "custom/fans",
-    "backlight",
-    "pulseaudio",
+    "custom/spacer",
+    "cpu",
+    "temperature",
+    "memory",
     "network",
+    "custom/spacer",
+    "pulseaudio",
+    "backlight",
+    "custom/spacer",
+    "custom/fans",
     "battery",
-    "custom/notification",
+    "custom/spacer",
+    "clock",
   ],
+
+  "custom/fans": {
+    "exec": "$HOME/.config/scripts/fancheck.sh",
+    "format": "{icon} {percentage}%",
+    "format-icons": {
+      "on": "",
+      "off": "󰠝",
+    },
+    "interval": 5,
+    "return-type": "json",
+  },
+
+  "group/tray": {
+    "orientation": "horizontal",
+    "drawer": {
+      "transition-duration": "500",
+      "transition-left-to-right": "true",
+      "children-class": "drawer-child",
+      //"click-to-reveal": "false"
+    },
+    "modules": ["custom/notification", "tray"],
+  },
+
+  "backlight": {
+    "format": "{icon} {percent}%",
+    "format-icons": ["󱩎", "󱩑", "󱩓", "󱩕", "󰛨"],
+    "on-click": "brightnessctl set +5%",
+    "on-click-right": "brightnessctl set 5%-",
+  },
+
+  "battery": {
+    "states": {
+      "good": 50,
+      "warning": 20,
+      "critical": 10,
+    },
+    "format": "{icon} {capacity}%",
+    "format-charging": "󰂄 {capacity}%",
+    "format-plugged": "󰚥 {capacity}%",
+    "format-alt": "{icon} {time}",
+    "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+  },
+
+  "clock": {
+    "interval": 1,
+    "format": " {:%H:%M:%S    %d.%m}",
+    "tooltip-format": "{:%d.%m.%Y   Week %W}\n\n<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "mode": "month",
+      "mode-mon-col": 3,
+      "weeks-pos": "right", // Nicked from Archttila
+      "on-scroll": 1,
+      "format": {
+        "months": "<span color='#cba6f7'><b>{}</b></span>",
+        "days": "<span color='#cdd6f4'><b>{}</b></span>",
+        "weeks": "<span color='#94e2d5'> W{}</span>",
+        "weekdays": "<span color='#f9e2af'><b>{}</b></span>",
+        "today": "<span color='#f5e0dc'><b><u>{}</u></b></span>",
+      },
+    },
+  },
+
+  "cpu": {
+    "interval": 4,
+    "format": " {usage}%",
+    "states": {
+      "warning": 80,
+      "critical": 95,
+    },
+  },
+
+  "memory": {
+    "interval": 4,
+    "format": " {percentage}%",
+    "states": {
+      "warning": 80,
+      "critical": 95,
+    },
+    "tooltip": "{}",
+    "tooltip-format": "{used}/{total} GiB",
+  },
+
+  "network": {
+    "interval": 2,
+    "format": "󱘖  Offline",
+    "format-wifi": "{icon} {bandwidthDownBits}",
+    "format-ethernet": "󰈀 {bandwidthDownBits}",
+    "min-length": 11,
+    "tooltip": "{}",
+    "tooltip-format-wifi": "{ifname}\n{essid}\n{signalStrength}% \n{frequency} GHz\n󰇚 {bandwidthDownBits}\n󰕒 {bandwidthUpBits}",
+    "tooltip-format-ethernet": "{ifname}\n󰇚 {bandwidthDownBits} \n󰕒 {bandwidthUpBits}",
+    "format-icons": ["󰤫", "󰤟", "󰤢", "󰤥", "󰤨"],
+    "states": {
+      "normal": 25,
+    },
+  },
 
   "hyprland/workspaces": {
     "on-click": "activate",
     "on-scroll-up": "hyprctl dispatch workspace e-1",
     "on-scroll-down": "hyprctl dispatch workspace e+1",
     "persistent-workspaces": {
-      "*": 3, // 5 workspaces by default on every monitor
+      "*": 3, // 3 workspaces by default on every monitor
     },
-  },
-
-  "power-profiles-daemon": {
-    "format": "{icon}  {profile}",
-    "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
-    "tooltip": true,
-    "format-icons": {
-      "default": "",
-      "performance": "",
-      "balanced": "",
-      "power-saver": "",
-    },
-  },
-
-  "clock": {
-    "format": "󰥔 {:%H:%M}",
-    "format-alt": "󰃮 {:%A, %d %B}",
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-    "calendar": {
-      "mode": "month",
-      "mode-mon-col": 3,
-      "weeks-pos": "right",
-      "on-scroll": 1,
-      "on-click-right": "mode",
-      "format": {
-        "months": "<span color='#d3c6aa'><b>{}</b></span>",
-        "days": "<span color='#e67e80'>{}</span>",
-        "weeks": "<span color='#a7c080'><b>W{}</b></span>",
-        "weekdays": "<span color='#7fbbb3'><b>{}</b></span>",
-        "today": "<span color='#dbbc7f'><b><u>{}</u></b></span>",
-      },
-    },
-  },
-
-  "tray": {
-    "icon-size": 18,
-    "spacing": 5,
-  },
-
-  "backlight": {
-    "format": "{icon} {percent}%",
-    "format-icons": ["󰃞", "󰃟", "󰃠"],
-    "on-click": "brightnessctl set +5%",
-    "on-click-right": "brightnessctl set 5%-",
   },
 
   "pulseaudio": {
@@ -91,55 +155,23 @@
     "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -2%",
   },
 
-  "network": {
-    "format-wifi": "󰖩 {essid} {signalStrength}%",
-    "format-ethernet": "󰈀 {ifname}",
-    "format-linked": "󰈀 {ifname} (No IP)",
-    "format-disconnected": "󰖪 Disconnected",
-    "format-alt": "{ifname}: {ipaddr}/{cidr}",
-    "tooltip-format": "{ifname}: {ipaddr}",
-  },
-
-  "battery": {
-    "states": {
-      "good": 50,
-      "warning": 20,
-      "critical": 10,
-    },
-    "format": "{icon} {capacity}%",
-    "format-charging": "󰂄 {capacity}%",
-    "format-plugged": "󰚥 {capacity}%",
-    "format-alt": "{icon} {time}",
-    "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
-  },
-
-  "cpu": {
-    "format": "󰍛 {usage}%",
-    "tooltip": true,
-    "interval": 1,
-  },
-
-  "memory": {
-    "format": "󰘚 {}%",
-    "interval": 1,
-  },
-
   "temperature": {
     "hwmon-path": "/sys/devices/platform/PNP0C14:02/wmi_bus/wmi_bus-PNP0C14:02/F1DDEE52-063C-4784-A11E-8A06684B9B01/hwmon/hwmon5/temp1_input",
-    "critical-threshold": 80,
-    "format": "{icon} {temperatureC}°C",
-    "format-icons": ["󱃃", "󰔏", "󱃂"],
+    "critical-threshold": 90,
+    "interval": 4,
+    "format": "{icon} {temperatureC}°",
+    "format-icons": ["", "", "", "", ""],
+    "tooltip": false,
   },
 
-  "custom/fans": {
-    "exec": "$HOME/.config/scripts/fancheck.sh",
-    "format": "Fans {icon} ",
-    "format-icons": {
-      "on": "",
-      "off": "󰠝",
-    },
-    "interval": 5,
-    "return-type": "json",
+  "tray": {
+    "icon-size": 17,
+    "spacing": 8,
+  },
+
+  "custom/spacer": {
+    "format": " \\\\ ",
+    "tooltip": false,
   },
 
   "custom/notification": {

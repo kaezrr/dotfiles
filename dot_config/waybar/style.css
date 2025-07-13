@@ -1,113 +1,231 @@
-/*
- * Variant: Rosé Pine
- * Maintainer: DankChoir
- */
+@define-color background  #151520;
+@define-color warning     #f38ba8;
+@define-color caution     #45475a;
+@define-color performance #f5c2e7;
+@define-color audio       #cba6f7;
+@define-color misc        #94e2d5;
+@define-color date        #a6e3a1;
+@define-color work        #b4befe;
+@define-color window      #b4befe;
+@define-color resize      #eba0ac;
+@define-color process     #89b4fa;
 
 * {
   border: none;
   border-radius: 0;
   min-height: 0;
-  font-family: "JetBrainsMono Nerd Font", monospace;
-  font-weight: bold;
-  font-size: 14px;
+  margin: 0;
   padding: 0;
+  box-shadow: none;
+  text-shadow: none;
 }
 
-window#waybar {
+/* Keyframes for main bar criticals */
+@keyframes blink-critical-text {
+  to {
+    color: @warning;
+  }
+}
+
+/* Keyframes for main bar modifiers */
+@keyframes blink-modifier-text {
+  to {
+    color: @caution;
+  }
+}
+
+/* Main bar defaults */ /* {{{ */
+#waybar.main {
   background: transparent;
-  border: none;
+  font-family: "JetBrains Mono Nerd Font";
+  font-size: 11pt;
+  font-weight: 500;
 }
 
+#waybar.main button {
+  font-family: JetBrains Mono Nerd Font;
+  font-size: 11pt;
+  font-weight: 500;
+  transition: all 0.15s ease-in-out;
+}
+
+/* Main bar modules */ /* {{{ */
+#waybar.main #battery,
+#waybar.main #network,
+#waybar.main #battery,
+#waybar.main #backlight,
+#waybar.main #clock,
+#waybar.main #cpu,
+#waybar.main #memory,
+#waybar.main #pulseaudio,
+#waybar.main #temperature,
+#waybar.main #tray,
+#waybar.main #custom-fans {
+  padding-left: 8pt;
+  padding-right: 8pt;
+  padding-bottom: 4px;
+  padding-top: 4px;
+  background: transparent;
+}
+
+#waybar.main #tray {
+  padding-right: 6pt;
+}
+
+/* Module colors */
+#waybar.main #cpu,
+#waybar.main #temperature,
+#waybar.main #memory,
+#waybar.main #disk,
+#waybar.main #network {
+  color: @performance;
+}
+
+#waybar.main #backlight,
+#waybar.main #pulseaudio {
+  color: @audio;
+}
+
+#waybar.main #custom-fans,
+#waybar.main #battery {
+  color: @misc;
+}
+
+#waybar.main #clock {
+  color: @date;
+}
+
+#waybar.main #network {
+  padding-right: 5px;
+  padding-left: 5px;
+  color: @caution;
+  background: transparent;
+}
+
+#waybar.main #network.wifi.normal,
+#waybar.main #network.ethernet {
+  color: @performance;
+  padding-right: 10px;
+}
+
+#waybar.main #network.wifi {
+  color: @warning;
+  padding-right: 10px;
+} /* }}} */
+
+/* Main bar criticals */
+#waybar.main #custom-nvidia.critical,
+#waybar.main #custom-battery.critical,
+#waybar.main #workspaces button.urgent,
+#waybar.main #workspaces button.special.urgent,
+#waybar.main #memory.swap.critical,
+#waybar.main #memory.ram.critical,
+#waybar.main #cpu.critical,
+#waybar.main #temperature.critical,
+#waybar.main #battery.critical.discharging {
+  color: @caution;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-name: blink-critical-text;
+  animation-duration: 1s;
+  animation-timing-function: steps(15);
+}
+
+/* Main bar warnings */
+#waybar.main #pulseaudio.muted {
+  color: @caution;
+}
+
+#waybar.main #battery.warning,
+#waybar.main #battery.warning.discharging {
+  color: @warning;
+}
+
+/* Battery chargin */
+#waybar.main #battery.charging {
+  color: @misc;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-name: blink-modifier-text;
+  animation-duration: 1s;
+  animation-timing-function: steps(15);
+}
+
+/* Workspace */
+/* Default workspace settings */
+#waybar.main #workspaces button {
+  color: @caution;
+  background: transparent;
+  border: 1.5px solid transparent;
+  padding-left: 2pt;
+  padding-right: 2pt;
+  border-radius: 16px;
+  margin-bottom: 8px;
+  margin-top: 8px;
+  margin-left: 4px;
+  margin-right: 4px;
+  transition: all 0.25s ease;
+}
+
+/* Focused workspace */
+#waybar.main #workspaces button.visible {
+  color: @window;
+}
+
+/* Focused workspace & monitor */
+#waybar.main #workspaces button.active {
+  color: @window;
+  border: 1.5px solid @caution;
+}
+
+/* Style when cursor is on the button */
+#waybar.main #workspaces button:hover {
+  color: @window;
+}
+
+/* Special workplace animation */
+#waybar.main #workspaces button.special.active {
+  border: 1.5px solid transparent;
+  color: @window;
+  transition: all 0s ease;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-name: blink-modifier-text;
+  animation-duration: 1s;
+  animation-timing-function: steps(15);
+}
+
+/* Custom slashes as spacers */
+#waybar.main #custom-spacer {
+  font-size: 11pt;
+  font-weight: bold;
+  color: @caution;
+  background: transparent;
+}
+
+/* Custom tray icon */
+#waybar.main #custom-notification {
+  font-size: 11pt;
+  font-weight: bold;
+  font-style: italic;
+  color: @process;
+  background: transparent;
+  padding-right: 6pt;
+  padding-left: 2pt;
+}
+
+/* Tooltip */
 tooltip {
-  background-color: #1f1d2e; /* was @surface */
-  border: 2px solid #524f67; /* was @highlightHigh */
+  background: @background;
+  border: 3px solid @caution;
+  border-radius: 8px;
+  font-weight: 500;
+  font-family: "JetBrains Mono Nerd Font";
 }
 
-#clock,
-#tray,
-#cpu,
-#memory,
-#battery,
-#power-profiles-daemon,
-#backlight,
-#temperature,
-#custom-fans,
-#custom-notification,
-#network,
-#pulseaudio {
-  margin: 6px 6px 6px 0px;
-  padding: 2px 8px;
-}
-
-#workspaces {
-  background-color: #191724; /* was @overlay */
-  margin: 6px 6px 6px 6px;
-  border: 2px solid #403d52; /* was @highlightMed */
-}
-
-#workspaces button {
-  all: initial;
-  min-width: 0;
-  box-shadow: inset 0 -3px transparent;
-  padding: 2px 10px;
-  color: #31748f; /* was @pine */
-}
-
-#workspaces button.active {
-  color: #f6c177; /* was @gold */
-}
-
-#workspaces button.urgent {
-  color: #eb6f92; /* was @love */
-}
-
-#clock {
-  background-color: #191724; /* was @overlay */
-  border: 2px solid #403d52; /* was @highlightMed */
-  color: #e0def4; /* was @text */
-}
-
-#tray {
-  background-color: #191724; /* was @overlay */
-  border: 2px solid #403d52; /* was @highlightMed */
-}
-
-#battery,
-#battery.charging,
-#battery.plugged,
-#custom-fans.on {
-  background-color: #191724; /* was @pine */
-  border: 2px solid #a7c080; /* was @gold */
-  color: #a7c080; /* was @base */
-}
-
-#cpu,
-#memory,
-#network,
-#power-profiles-daemon,
-#custom-notification,
-#backlight,
-#temperature,
-#pulseaudio {
-  background-color: #191724; /* was @base */
-  border: 2px solid #403d52; /* was @overlay */
-  color: #c4a7e7; /* was @iris */
-}
-
-#cpu.critical,
-#memory.critical,
-#temperature.critical,
-#custom-fans.off,
-#custom-fans {
-  background-color: #191724; /* was @gold */
-  border: 2px solid #eb6f92; /* was @subtle */
-  color: #eb6f92; /* was @love */
-}
-
-#battery.warning,
-#battery.critical,
-#battery.urgent {
-  background-color: #191724; /* was @gold */
-  border: 2px solid #eb6f92; /* was @gold */
-  color: #eb6f92; /* was @love */
+#waybar.main #tray menu {
+  background: @background;
+  border: 2px solid @caution;
+  border-radius: 0px;
+  padding: 10px 5px;
 }
