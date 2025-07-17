@@ -203,17 +203,6 @@
   background: transparent;
 }
 
-/* Custom tray icon */
-#waybar.main #custom-notification {
-  font-size: 11pt;
-  font-weight: bold;
-  font-style: italic;
-  color: @process;
-  background: transparent;
-  padding-right: 6pt;
-  padding-left: 2pt;
-}
-
 /* Tooltip */
 tooltip {
   background: @background;
