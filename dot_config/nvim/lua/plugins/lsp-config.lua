@@ -266,19 +266,13 @@ return {
       'rust-analyzer',
       'clangd',
       'css-lsp',
-      'dockerfile-language-server',
-      'emmet-language-server',
-      'html-lsp',
       'lua-language-server',
-      'prisma-language-server',
       'typescript-language-server',
-      'yaml-language-server',
       -- formatters
       'beautysh',
       'clang-format',
       'prettier',
       'stylua',
-      'tex-fmt',
       -- DAPs
       'codelldb',
     })

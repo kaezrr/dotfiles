@@ -226,7 +226,7 @@
     ### Misc/Advanced ###
 
     # dmenu path.
-    dmenu = /usr/local/bin/rofi -dmenu -p dunst:
+    dmenu = /usr/bin/fuzzel --dmenu -p dunst:
 
     # Browser for opening urls in context menu.
     browser = /usr/bin/xdg-open
@@ -311,7 +311,7 @@
     background = "#1f1f28"
     foreground = "#dcd7ba"
     frame_color = "#7e9cd8"
-    timeout = 10
+    timeout = 5
     # Icon for notifications with low urgency, uncomment to enable
     #default_icon = /path/to/icon
 
@@ -319,7 +319,7 @@
     background = "#1f1f28"
     foreground = "#dcd7ba"
     highlight = "#7e9cd8"
-    timeout = 10
+    timeout = 8
     # Icon for notifications with normal urgency, uncomment to enable
     #default_icon = /path/to/icon
 
