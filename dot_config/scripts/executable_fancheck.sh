@@ -4,9 +4,14 @@ MAX_RPM=6900
 
 sensors_output=$(sensors)
 
-proc_rpm=$(echo "$sensors_output" | grep "Processor Fan" | sed -E 's/.*Processor Fan:\s*([0-9]+) RPM.*/\1/')
-mobo_rpm=$(echo "$sensors_output" | grep "Motherboard Fan" | sed -E 's/.*Motherboard Fan:\s*([0-9]+) RPM.*/\1/')
+# Extract only the 'dell_smm-virtual-0' block
+dell_block=$(echo "$sensors_output" | awk '/^dell_smm-virtual-0/,/^$/')
 
+# Extract Processor Fan and Motherboard Fan values from the dell block
+proc_rpm=$(echo "$dell_block" | grep "Processor Fan" | sed -E 's/.*Processor Fan:\s*([0-9]+) RPM.*/\1/')
+mobo_rpm=$(echo "$dell_block" | grep "Motherboard Fan" | sed -E 's/.*Motherboard Fan:\s*([0-9]+) RPM.*/\1/')
+
+# Handle missing data
 proc_rpm=${proc_rpm:-0}
 mobo_rpm=${mobo_rpm:-0}
 

@@ -266,7 +266,11 @@ return {
       'rust-analyzer',
       'clangd',
       'css-lsp',
+      'emmet-language-server',
+      'html-lsp',
       'lua-language-server',
+      'basedpyright',
+      'prisma-language-server',
       'typescript-language-server',
       -- formatters
       'beautysh',

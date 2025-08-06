@@ -42,7 +42,7 @@ return { -- Autoformat
       sh = { 'beautysh' },
       rust = { 'rustfmt' },
       yaml = { 'prettier' },
-      tex = { 'tex-fmt' },
+      python = { 'black' },
     },
   },
 }
