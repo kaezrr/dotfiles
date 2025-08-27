@@ -1,4 +1,4 @@
-fish_config theme choose "kanagawa"
+fish_config theme choose kanagawa
 
 # Set environment variables
 set -gx PATH $HOME/.local/bin $HOME/.cargo/bin $PATH
@@ -11,10 +11,12 @@ set -gx NVM_COMPLETION true
 set -g fish_greeting
 
 # Aliases
-alias vi "nvim"
+alias vi nvim
+alias hx helix
+alias vv "NVIM_APPNAME=nvim-new nvim"
 alias ll "eza -l --icons=auto --group-directories-first"
 alias la "eza -lA --icons=auto --group-directories-first"
-alias cat "bat"
+alias cat bat
 
 # zoxide initialization
 zoxide init fish --cmd cd | source

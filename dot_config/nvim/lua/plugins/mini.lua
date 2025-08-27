@@ -19,10 +19,5 @@ return { -- Collection of various small independent plugins/modules
     require('mini.icons').setup()
     MiniIcons.mock_nvim_web_devicons()
     require('mini.pairs').setup()
-
-    -- File system
-    local files = require 'mini.files'
-    files.setup()
-    vim.keymap.set('n', '<leader>e', function() files.open(vim.api.nvim_buf_get_name(0), false) end, { desc = 'Open [E]xplorer' })
   end,
 }
