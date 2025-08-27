@@ -1,16 +1,20 @@
 return {
+  -- Main LSP Configuration
   'neovim/nvim-lspconfig',
   dependencies = {
+    -- Automatically install LSPs and related tools
     { 'mason-org/mason.nvim', opts = {} },
     'mason-org/mason-lspconfig.nvim',
     'WhoIsSethDaniel/mason-tool-installer.nvim',
-
     'saghen/blink.cmp',
   },
   config = function()
+    -- This function runs when an LSP attaches to a buffer.
+    -- It's used to set up buffer-local keymaps and features.
     vim.api.nvim_create_autocmd('LspAttach', {
       group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
       callback = function(event)
+        -- Helper for creating buffer-local keymaps
         local map = function(keys, func, desc, mode)
           mode = mode or 'n'
           vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
@@ -26,28 +30,21 @@ return {
         map('gW', require('snacks').picker.lsp_workspace_symbols, 'Open Workspace Symbols')
         map('grt', require('snacks').picker.lsp_type_definitions, '[G]oto [T]ype Definition')
 
-        -- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
-        ---@param client vim.lsp.Client
-        ---@param method vim.lsp.protocol.Method
-        ---@param bufnr? integer some lsp support methods only in specific files
-        ---@return boolean
-        local function client_supports_method(client, method, bufnr) return client:supports_method(method, bufnr) end
-
         local client = vim.lsp.get_client_by_id(event.data.client_id)
-        if client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf) then
+
+        -- Highlight references under the cursor
+        if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf) then
           local highlight_augroup = vim.api.nvim_create_augroup('kickstart-lsp-highlight', { clear = false })
           vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
             buffer = event.buf,
             group = highlight_augroup,
             callback = vim.lsp.buf.document_highlight,
           })
-
           vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
             buffer = event.buf,
             group = highlight_augroup,
             callback = vim.lsp.buf.clear_references,
           })
-
           vim.api.nvim_create_autocmd('LspDetach', {
             group = vim.api.nvim_create_augroup('kickstart-lsp-detach', { clear = true }),
             callback = function(event2)
@@ -57,12 +54,14 @@ return {
           })
         end
 
-        if client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
+        -- Toggle inlay hints
+        if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
           map('<leader>th', function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf }) end, '[T]oggle Inlay [H]ints')
         end
       end,
     })
 
+    -- Diagnostic Configuration
     vim.diagnostic.config {
       severity_sort = true,
       float = { border = 'rounded', source = 'if_many' },
@@ -90,87 +89,58 @@ return {
       },
     }
 
-    ---@class LspServersConfig
-    ---@field mason table<string, vim.lsp.Config>
-    ---@field others table<string, vim.lsp.Config>
     local servers = {
-      mason = {
-        clangd = {
-          cmd = { 'clangd', '--header-insertion=never' },
-        },
-
-        rust_analyzer = {
-          settings = {
-            ['rust-analyzer'] = {
-              checkOnSave = true,
-              check = {
-                command = 'clippy',
-              },
-            },
-          },
-        },
-
-        cssls = {
-          settings = {
-            css = {
-              validate = true,
-              lint = {
-                unknownAtRules = 'ignore',
-              },
-            },
-          },
-        },
-
-        lua_ls = {
-          -- cmd = { ... },
-          -- filetypes = { ... },
-          -- capabilities = {},
-          settings = {
-            Lua = {
-              completion = {
-                callSnippet = 'Replace',
-              },
-              diagnostics = { disable = { 'missing-fields' } },
-            },
+      clangd = {
+        cmd = { 'clangd', '--header-insertion=never' },
+      },
+      rust_analyzer = {
+        settings = {
+          ['rust-analyzer'] = {
+            checkOnSave = true,
+            check = { command = 'clippy' },
           },
         },
       },
-      others = {
-        -- dartls = {},
+      cssls = {
+        settings = {
+          css = { validate = true, lint = { unknownAtRules = 'ignore' } },
+        },
+      },
+      lua_ls = {
+        settings = {
+          Lua = {
+            completion = { callSnippet = 'Replace' },
+            diagnostics = { disable = { 'missing-fields' } },
+          },
+        },
       },
     }
 
-    local ensure_installed = vim.tbl_keys(servers.mason or {})
-    vim.list_extend(ensure_installed, {
+    -- List of all tools to be automatically installed by Mason.
+    local ensure_installed = {
       -- LSPs
       'rust-analyzer',
       'clangd',
-      'css-lsp',
-      'html-lsp',
       'lua-language-server',
       'basedpyright',
       'typescript-language-server',
+      'cssls',
       -- Formatters
       'beautysh',
       'clang-format',
       'prettier',
       'stylua',
-    })
+      'black',
+    }
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
-    for server, config in pairs(vim.tbl_extend('keep', servers.mason, servers.others)) do
-      if not vim.tbl_isempty(config) then
-        vim.lsp.config(server, config)
-      end
+    for server, config in pairs(servers) do
+      require('lspconfig')[server].setup(config)
     end
 
     require('mason-lspconfig').setup {
-      ensure_installed = {}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
-      automatic_enable = true, -- automatically run vim.lsp.enable() for all servers that are installed via Mason
+      ensure_installed = {},
+      automatic_enable = true,
     }
-
-    if not vim.tbl_isempty(servers.others) then
-      vim.lsp.enable(vim.tbl_keys(servers.others))
-    end
   end,
 }
