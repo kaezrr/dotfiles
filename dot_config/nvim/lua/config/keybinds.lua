@@ -23,14 +23,14 @@ vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' }
 -- Oil.nvim
 vim.keymap.set('n', '<leader>e', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
 
+vim.keymap.set('n', '<C-w>', '<CMD>update<CR>', { desc = 'Save buffer' })
+vim.keymap.set('n', '<C-q>', '<CMD>quit<CR>', { desc = 'Quit buffer' })
+
 -- Keybinds to make split navigation easier.
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
-
-vim.keymap.set('n', '<leader>w', ':update<CR>', { desc = 'Save file', silent = true })
-vim.keymap.set('n', '<leader>q', ':q<CR>', { desc = 'Close file', silent = true })
 
 -- Moving throught snippets
 vim.keymap.set({ 'i', 's' }, '<C-l>', function()
