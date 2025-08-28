@@ -22,6 +22,7 @@ return {
         map('gO', require('snacks').picker.lsp_symbols, 'Open Document Symbols')
         map('gW', require('snacks').picker.lsp_workspace_symbols, 'Open Workspace Symbols')
         map('grt', require('snacks').picker.lsp_type_definitions, '[G]oto [T]ype Definition')
+        map('gl', vim.diagnostic.open_float, 'Open Diagnostic Float')
 
         local client = vim.lsp.get_client_by_id(event.data.client_id)
 
@@ -54,7 +55,14 @@ return {
 
     vim.diagnostic.config {
       severity_sort = true,
-      float = { border = 'rounded', source = 'if_many' },
+      float = {
+        title = 'Diagnostic',
+        header = '',
+        border = 'single',
+        source = 'if_many',
+        scope = 'line',
+      },
+
       underline = { severity = vim.diagnostic.severity.ERROR },
       signs = vim.g.have_nerd_font and {
         text = {
@@ -64,6 +72,7 @@ return {
           [vim.diagnostic.severity.HINT] = '󰌶 ',
         },
       } or {},
+
       virtual_text = {
         source = 'if_many',
         spacing = 2,

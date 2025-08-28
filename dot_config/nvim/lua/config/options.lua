@@ -31,7 +31,7 @@ vim.opt.expandtab = true
 vim.opt.shiftwidth = 4
 vim.opt.softtabstop = 4
 
-vim.o.winborder = 'rounded'
+vim.o.winborder = 'single'
 
 -- Sync clipboard with OS
 vim.opt.clipboard = 'unnamedplus'
