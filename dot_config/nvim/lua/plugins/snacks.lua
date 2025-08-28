@@ -3,28 +3,28 @@ return { -- Fuzzy Finder (files, lsp, etc)
   priority = 1000,
   lazy = false,
 
-  -- snacks.nvim is a plugin that contains a collection of QoL improvements.
-  -- One of those plugins is called snacks-picker
-  -- It is a fuzzy finder, inspired by Telescope, that comes with a lot of different
-  -- things that it can fuzzy find! It's more than just a "file finder", it can search
-  -- many different aspects of Neovim, your workspace, LSP, and more!
-  --
-  -- Two important keymaps to use while in a picker are:
-  --  - Insert mode: <c-/>
-  --  - Normal mode: ?
-  --
-  -- This opens a window that shows you all of the keymaps for the current
-  -- Snacks picker. This is really useful to discover what nacks-picker can
-  -- do as well as how to actually do it!
-
-  -- [[ Configure Snacks Pickers ]]
-  -- See `:help snacks-picker` and `:help snacks-picker-setup`
   ---@type snacks.Config
   opts = {
     picker = {},
     notifier = {
       enabled = true,
       timeout = 3000,
+    },
+    dashboard = {
+      preset = {
+        keys = {
+          { icon = ' ', key = 'f', desc = 'Find File', action = ":lua Snacks.dashboard.pick('files')" },
+          { icon = ' ', key = 'g', desc = 'Find Text', action = ":lua Snacks.dashboard.pick('live_grep')" },
+          { icon = ' ', key = 'c', desc = 'Config', action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})" },
+          { icon = '󰒲 ', key = 'l', desc = 'Lazy', action = ':Lazy', enabled = package.loaded.lazy ~= nil },
+          { icon = ' ', key = 'q', desc = 'Quit', action = ':qa' },
+        },
+      },
+      sections = {
+        { section = 'header' },
+        { section = 'keys', gap = 1, padding = 1 },
+        { section = 'startup' },
+      },
     },
   },
 
@@ -91,7 +91,6 @@ return { -- Fuzzy Finder (files, lsp, etc)
       function() Snacks.picker.grep_buffers() end,
       desc = '[S]earch [/] in Open Files',
     },
-    -- Shortcut for searching your Neovim configuration files
     {
       '<leader>sn',
       function() Snacks.picker.files { cwd = vim.fn.stdpath 'config' } end,

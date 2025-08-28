@@ -2,19 +2,12 @@ return {
   -- Main LSP Configuration
   'neovim/nvim-lspconfig',
   dependencies = {
-    -- Automatically install LSPs and related tools
-    { 'mason-org/mason.nvim', opts = {} },
-    'mason-org/mason-lspconfig.nvim',
-    'WhoIsSethDaniel/mason-tool-installer.nvim',
     'saghen/blink.cmp',
   },
   config = function()
-    -- This function runs when an LSP attaches to a buffer.
-    -- It's used to set up buffer-local keymaps and features.
     vim.api.nvim_create_autocmd('LspAttach', {
-      group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
+      group = vim.api.nvim_create_augroup('lsp-attach', { clear = true }),
       callback = function(event)
-        -- Helper for creating buffer-local keymaps
         local map = function(keys, func, desc, mode)
           mode = mode or 'n'
           vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
@@ -32,9 +25,8 @@ return {
 
         local client = vim.lsp.get_client_by_id(event.data.client_id)
 
-        -- Highlight references under the cursor
         if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf) then
-          local highlight_augroup = vim.api.nvim_create_augroup('kickstart-lsp-highlight', { clear = false })
+          local highlight_augroup = vim.api.nvim_create_augroup('lsp-highlight', { clear = false })
           vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
             buffer = event.buf,
             group = highlight_augroup,
@@ -46,22 +38,20 @@ return {
             callback = vim.lsp.buf.clear_references,
           })
           vim.api.nvim_create_autocmd('LspDetach', {
-            group = vim.api.nvim_create_augroup('kickstart-lsp-detach', { clear = true }),
+            group = vim.api.nvim_create_augroup('lsp-detach', { clear = true }),
             callback = function(event2)
               vim.lsp.buf.clear_references()
-              vim.api.nvim_clear_autocmds { group = 'kickstart-lsp-highlight', buffer = event2.buf }
+              vim.api.nvim_clear_autocmds { group = 'lsp-highlight', buffer = event2.buf }
             end,
           })
         end
 
-        -- Toggle inlay hints
         if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
           map('<leader>th', function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf }) end, '[T]oggle Inlay [H]ints')
         end
       end,
     })
 
-    -- Diagnostic Configuration
     vim.diagnostic.config {
       severity_sort = true,
       float = { border = 'rounded', source = 'if_many' },
@@ -89,10 +79,7 @@ return {
       },
     }
 
-    local servers = {
-      clangd = {
-        cmd = { 'clangd', '--header-insertion=never' },
-      },
+    local lsp_configs = {
       rust_analyzer = {
         settings = {
           ['rust-analyzer'] = {
@@ -101,11 +88,17 @@ return {
           },
         },
       },
+
+      clangd = {
+        cmd = { 'clangd', '--header-insertion=never' },
+      },
+
       cssls = {
         settings = {
           css = { validate = true, lint = { unknownAtRules = 'ignore' } },
         },
       },
+
       lua_ls = {
         settings = {
           Lua = {
@@ -116,31 +109,17 @@ return {
       },
     }
 
-    -- List of all tools to be automatically installed by Mason.
-    local ensure_installed = {
-      -- LSPs
-      'rust-analyzer',
-      'clangd',
-      'lua-language-server',
-      'basedpyright',
-      'typescript-language-server',
-      'cssls',
-      -- Formatters
-      'beautysh',
-      'clang-format',
-      'prettier',
-      'stylua',
-      'black',
-    }
-    require('mason-tool-installer').setup { ensure_installed = ensure_installed }
-
-    for server, config in pairs(servers) do
-      require('lspconfig')[server].setup(config)
+    for server, config in pairs(lsp_configs) do
+      vim.lsp.config(server, config)
     end
 
-    require('mason-lspconfig').setup {
-      ensure_installed = {},
-      automatic_enable = true,
+    vim.lsp.enable {
+      'rust_analyzer',
+      'clangd',
+      'lua_ls',
+      'pyright',
+      'ts_ls',
+      'cssls',
     }
   end,
 }
