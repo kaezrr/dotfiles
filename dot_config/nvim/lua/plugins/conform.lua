@@ -40,6 +40,7 @@ return { -- Autoformat
       rust = { 'rustfmt' },
       yaml = { 'prettier' },
       python = { 'black' },
+      go = { 'gofmt' },
     },
   },
 }

@@ -88,47 +88,78 @@ return {
       },
     }
 
-    local lsp_configs = {
-      rust_analyzer = {
-        settings = {
-          ['rust-analyzer'] = {
-            checkOnSave = true,
-            check = { command = 'clippy' },
-          },
-        },
-      },
-
+    local lsp = {
       clangd = {
-        cmd = { 'clangd', '--header-insertion=never' },
-      },
-
-      cssls = {
-        settings = {
-          css = { validate = true, lint = { unknownAtRules = 'ignore' } },
+        languages = { 'c', 'cpp' },
+        config = {
+          cmd = { 'clangd', '--header-insertion=never' },
         },
       },
 
       lua_ls = {
-        settings = {
-          Lua = {
-            completion = { callSnippet = 'Replace' },
-            diagnostics = { disable = { 'missing-fields' } },
+        languages = { 'lua' },
+        config = {
+          settings = {
+            Lua = {
+              completion = { callSnippet = 'Replace' },
+              diagnostics = { disable = { 'missing-fields' } },
+            },
+          },
+        },
+      },
+
+      rust_analyzer = {
+        languages = { 'rust' },
+        config = {
+          settings = {
+            ['rust-analyzer'] = {
+              checkOnSave = true,
+              check = { command = 'clippy' },
+            },
+          },
+        },
+      },
+
+      ts_ls = {
+        languages = { 'javascript', 'typescript', 'typescriptreact', 'javascriptreact' },
+      },
+
+      pyright = {
+        languages = { 'python' },
+      },
+
+      gopls = {
+        languages = { 'go' },
+      },
+
+      cssls = {
+        languages = { 'css' },
+        config = {
+          settings = {
+            css = { validate = true, lint = { unknownAtRules = 'ignore' } },
           },
         },
       },
     }
 
-    for server, config in pairs(lsp_configs) do
-      vim.lsp.config(server, config)
-    end
+    local augroup = vim.api.nvim_create_augroup('lsp', { clear = true })
 
-    vim.lsp.enable {
-      'rust_analyzer',
-      'clangd',
-      'lua_ls',
-      'pyright',
-      'ts_ls',
-      'cssls',
-    }
+    for server, entry in pairs(lsp) do
+      -- register configs if present
+      if entry.config then
+        vim.lsp.config(server, entry.config)
+      end
+
+      -- autocmds for each language
+      for _, ft in ipairs(entry.languages) do
+        vim.api.nvim_create_autocmd('FileType', {
+          group = augroup,
+          pattern = ft,
+          callback = function()
+            vim.schedule(function() vim.lsp.enable { server } end)
+          end,
+        })
+      end
+    end
   end,
 }
