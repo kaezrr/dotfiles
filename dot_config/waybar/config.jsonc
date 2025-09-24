@@ -103,12 +103,12 @@
   "network": {
     "interval": 2,
     "format": "󱘖  Offline",
-    "format-wifi": "{icon} {bandwidthDownBits}",
-    "format-ethernet": "󰈀 {bandwidthDownBits}",
+    "format-wifi": "{icon} {bandwidthDownBytes}",
+    "format-ethernet": "󰈀 {bandwidthDownBytes}",
     "min-length": 11,
     "tooltip": "{}",
-    "tooltip-format-wifi": "{ifname}\n{essid}\n{signalStrength}% \n{frequency} GHz\n󰇚 {bandwidthDownBits}\n󰕒 {bandwidthUpBits}",
-    "tooltip-format-ethernet": "{ifname}\n󰇚 {bandwidthDownBits} \n󰕒 {bandwidthUpBits}",
+    "tooltip-format-wifi": "{ifname}\n{essid}\n{signalStrength}% \n{frequency} GHz\n󰇚 {bandwidthDownBytes}\n󰕒 {bandwidthUpBytes}",
+    "tooltip-format-ethernet": "{ifname}\n󰇚 {bandwidthDownBytes} \n󰕒 {bandwidthUpBytes}",
     "format-icons": ["󰤫", "󰤟", "󰤢", "󰤥", "󰤨"],
     "states": {
       "normal": 25,
