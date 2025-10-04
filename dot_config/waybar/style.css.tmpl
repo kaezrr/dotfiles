@@ -34,22 +34,22 @@
   }
 }
 
-/* Main bar defaults */ /* {{{ */
+/* Main bar defaults */
 #waybar.main {
   background: transparent;
-  font-family: "JetBrains Mono Nerd Font";
+  font-family: {{ .font | quote }};
   font-size: 11pt;
   font-weight: 500;
 }
 
 #waybar.main button {
-  font-family: JetBrains Mono Nerd Font;
+  font-family: {{ .font | quote }};
   font-size: 11pt;
   font-weight: 500;
   transition: all 0.15s ease-in-out;
 }
 
-/* Main bar modules */ /* {{{ */
+/* Main bar modules */
 #waybar.main #battery,
 #waybar.main #network,
 #waybar.main #battery,
@@ -111,7 +111,7 @@
 #waybar.main #network.wifi {
   color: @warning;
   padding-right: 10px;
-} /* }}} */
+}
 
 /* Main bar criticals */
 #waybar.main #custom-nvidia.critical,
@@ -209,7 +209,7 @@ tooltip {
   border: 3px solid @caution;
   border-radius: 8px;
   font-weight: 500;
-  font-family: "JetBrains Mono Nerd Font";
+  font-family: {{ .font | quote }};
 }
 
 #waybar.main #tray menu {
