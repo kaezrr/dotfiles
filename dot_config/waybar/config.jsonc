@@ -12,6 +12,7 @@
     "custom/spacer",
     "hyprland/workspaces",
     "custom/spacer",
+    "hyprland/window",
   ],
 
   "modules-right": [
