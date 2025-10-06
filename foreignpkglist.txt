@@ -1,0 +1,9 @@
+bruno-bin
+codelldb-bin
+dell-g15-controller
+duckstation-qt-bin
+google-chrome
+polychromatic
+rose-pine-gtk-theme-full
+rstudio-desktop-bin
+staruml

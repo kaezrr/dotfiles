@@ -1,3 +1,0 @@
-[[mgr.prepend_keymap]]
-on  = "M"
-run = "plugin mount"
