@@ -5,8 +5,8 @@
   "name": "main",
 
   "margin-top": 6,
-  "margin-left": 16,
-  "margin-right": 16,
+  "margin-left": 6,
+  "margin-right": 6,
 
   "modules-left": ["group/traym", "hyprland/workspaces", "hyprland/window"],
 
