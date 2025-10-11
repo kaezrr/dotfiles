@@ -10,7 +10,6 @@ This rice tries to focus a lot on minimalism, performance and efficiency as much
 ![wallpaper](/Pictures/screenshots/showcase1.png)
 ![workflow](/Pictures/screenshots/showcase2.png)
 ![gaming_misc](/Pictures/screenshots/showcase3.png)
-![notif_launcher](/Pictures/screenshots/showcase4.png)
 
 ---
 
@@ -27,8 +26,7 @@ These dotfiles configure the tools I use daily:
 | `kitty`     | GPU-accelerated terminal emulator                     |
 | `nvim`      | Full-featured Neovim setup (IDE-lite)                 |
 | `scripts`   | Custom helper scripts (runners, toggles, etc.)        |
-| `swaync`    | Wayland-compatible notification center                |
-| `tmux`      | Terminal multiplexer with sensible bindings           |
+| `dunst`     | Wayland-compatible notification center                |
 | `waybar`    | Custom Wayland status bar with modules and styling    |
 
 ---
