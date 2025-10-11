@@ -1,14 +1,17 @@
-@define-color background  #151520;
-@define-color warning     #f38ba8;
-@define-color caution     #45475a;
+@define-color background1 rgba(32, 32, 48, 1);
+@define-color background2 rgba(21, 21, 32, 1);
+@define-color sepepator #313244;
+@define-color warning #f38ba8;
+@define-color caution #45475a;
 @define-color performance #f5c2e7;
-@define-color audio       #cba6f7;
-@define-color misc        #94e2d5;
-@define-color date        #a6e3a1;
-@define-color work        #b4befe;
-@define-color window      #b4befe;
-@define-color resize      #eba0ac;
-@define-color process     #89b4fa;
+@define-color audio #cba6f7;
+@define-color misc #94e2d5;
+@define-color date #a6e3a1;
+@define-color work #b4befe;
+@define-color window #b4befe;
+@define-color resize #eba0ac;
+@define-color process #89b4fa;
+@define-color text #000000;
 
 * {
   border: none;
@@ -20,110 +23,115 @@
   text-shadow: none;
 }
 
-/* Keyframes for main bar criticals */
-@keyframes blink-critical-text {
+@keyframes blink-urgent-workspace {
   to {
     color: @warning;
   }
 }
 
-/* Keyframes for main bar modifiers */
-@keyframes blink-modifier-text {
+@keyframes blink-critical-text {
   to {
-    color: @caution;
+    color: @sepepator;
   }
 }
 
-/* Main bar defaults */
+@keyframes blink-modifier-text {
+  to {
+    color: @sepepator;
+  }
+}
+
+@keyframes blink-special-workspace {
+  to {
+    color: @window;
+  }
+}
+
 #waybar.main {
-  background: transparent;
+  background: @background2;
   font-family: {{ .font | quote }};
   font-size: 11pt;
-  font-weight: 500;
+  font-weight: 600;
+  color: @text;
+  border-radius: 6pt;
 }
 
 #waybar.main button {
   font-family: {{ .font | quote }};
   font-size: 11pt;
-  font-weight: 500;
-  transition: all 0.15s ease-in-out;
+  font-weight: 600;
+  color: @text;
 }
 
-/* Main bar modules */
 #waybar.main #battery,
 #waybar.main #network,
-#waybar.main #battery,
 #waybar.main #backlight,
 #waybar.main #clock,
 #waybar.main #cpu,
 #waybar.main #memory,
+#waybar.main #custom-fans,
 #waybar.main #pulseaudio,
 #waybar.main #temperature,
-#waybar.main #tray,
-#waybar.main #custom-fans {
+#waybar.main #traym,
+#waybar.main #window {
   padding-left: 8pt;
   padding-right: 8pt;
-  padding-bottom: 4px;
-  padding-top: 4px;
-  background: transparent;
+  background: @module_bg;
 }
 
-#waybar.main #tray {
-  padding-right: 6pt;
-}
-
-/* Module colors */
 #waybar.main #cpu,
 #waybar.main #temperature,
 #waybar.main #memory,
-#waybar.main #disk,
 #waybar.main #network {
   color: @performance;
+  background: @background1;
 }
 
 #waybar.main #backlight,
 #waybar.main #pulseaudio {
   color: @audio;
+  background: @background2;
 }
 
 #waybar.main #custom-fans,
 #waybar.main #battery {
   color: @misc;
+  background: @background1;
 }
 
 #waybar.main #clock {
   color: @date;
+  background: @background2;
+  border-radius: 0pt 6pt 6pt 0pt;
 }
 
-#waybar.main #network {
-  padding-right: 5px;
-  padding-left: 5px;
+#waybar.main #window {
+  color: @window;
+  box-shadow: none;
+  font-style: italic;
+}
+
+#waybar.main #network.info {
+  padding-right: 10px;
+  padding-left: 10px;
   color: @caution;
-  background: transparent;
 }
 
-#waybar.main #network.wifi.normal,
-#waybar.main #network.ethernet {
+#waybar.main #network.info.wifi.normal,
+#waybar.main #network.info.ethernet {
   color: @performance;
-  padding-right: 10px;
+  padding-right: 15px;
 }
 
-#waybar.main #network.wifi {
+#waybar.main #network.info.wifi {
   color: @warning;
-  padding-right: 10px;
+  padding-right: 15px;
 }
 
-/* Main bar criticals */
-#waybar.main #custom-nvidia.critical,
-#waybar.main #custom-battery.critical,
-#waybar.main #workspaces button.urgent,
-#waybar.main #workspaces button.special.urgent,
-#waybar.main #memory.swap.critical,
-#waybar.main #memory.ram.critical,
+#waybar.main #memory.critical,
 #waybar.main #cpu.critical,
-#waybar.main #temperature.critical,
-#waybar.main #battery.critical.discharging {
-  color: @caution;
+#waybar.main #temperature.critical {
+  color: @warning;
   animation-iteration-count: infinite;
   animation-direction: alternate;
   animation-name: blink-critical-text;
@@ -131,17 +139,32 @@
   animation-timing-function: steps(15);
 }
 
-/* Main bar warnings */
+#waybar.main #workspaces button.urgent,
+#waybar.main #workspaces button.special.urgent {
+  transition: all 0s ease;
+  background-image: linear-gradient(
+    -63.435deg,
+    transparent 25%,
+    @background2 25%,
+    @background2 75%,
+    transparent 75%
+  );
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-name: blink-urgent-workspace;
+  animation-duration: 1s;
+  animation-timing-function: steps(15);
+}
+
 #waybar.main #pulseaudio.muted {
-  color: @caution;
+  color: @sepepator;
 }
 
 #waybar.main #battery.warning,
-#waybar.main #battery.warning.discharging {
+#waybar.main #battery.critical {
   color: @warning;
 }
 
-/* Battery chargin */
 #waybar.main #battery.charging {
   color: @misc;
   animation-iteration-count: infinite;
@@ -151,61 +174,181 @@
   animation-timing-function: steps(15);
 }
 
-/* Workspace */
-/* Default workspace settings */
+#waybar.main #workspaces {
+  padding-left: 20px;
+  padding-right: 4px;
+  margin-top: -6px;
+  margin-bottom: -6px;
+  background-image: linear-gradient(
+    -243.435deg,
+    @background2 17px,
+    @sepepator 17px,
+    @sepepator 21px,
+    transparent 21px,
+    transparent calc(100% -22px),
+    @sepepator calc(100% -22px),
+    @sepepator calc(100% - 18px),
+    transparent calc(100% - 18px)
+  );
+}
+
 #waybar.main #workspaces button {
-  color: @caution;
+  color: #45475a;
   background: transparent;
   border: 1.5px solid transparent;
-  padding-left: 2pt;
-  padding-right: 2pt;
-  border-radius: 16px;
-  margin-bottom: 8px;
-  margin-top: 8px;
-  margin-left: 4px;
-  margin-right: 4px;
+  padding-left: 4pt;
+  padding-right: 4pt;
   transition: all 0.25s ease;
+  padding-right: 16px;
+  padding-left: 16px;
+  font-style: italic;
+  margin-left: -17px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  background-image: linear-gradient(
+    -63.435deg,
+    transparent 25%,
+    @background2 25%,
+    @background2 75%,
+    transparent 75%
+  );
 }
 
-/* Focused workspace */
 #waybar.main #workspaces button.visible {
-  color: @window;
+  color: @text;
+  background-image: linear-gradient(
+    -63.435deg,
+    transparent 25%,
+    @caution 25%,
+    @caution 75%,
+    transparent 75%
+  );
 }
 
-/* Focused workspace & monitor */
 #waybar.main #workspaces button.active {
   color: @window;
-  border: 1.5px solid @caution;
+  background-image: linear-gradient(
+    -63.435deg,
+    transparent 24%,
+    @sepepator 24%,
+    @sepepator 28%,
+    @background1 28%,
+    @background1 73%,
+    @sepepator 73%,
+    @sepepator 76%,
+    transparent 76%
+  );
 }
 
-/* Style when cursor is on the button */
 #waybar.main #workspaces button:hover {
   color: @window;
 }
 
-/* Special workplace animation */
 #waybar.main #workspaces button.special.active {
-  border: 1.5px solid transparent;
-  color: @window;
   transition: all 0s ease;
+  border: 1.5px solid transparent;
+  color: @sepepator;
   animation-iteration-count: infinite;
   animation-direction: alternate;
-  animation-name: blink-modifier-text;
+  animation-name: blink-special-workspace;
   animation-duration: 1s;
   animation-timing-function: steps(15);
 }
 
-/* Custom slashes as spacers */
-#waybar.main #custom-spacer {
-  font-size: 11pt;
+#waybar.main #custom-spacer1,
+#waybar.main #custom-spacer2,
+#waybar.main #custom-spacer3,
+#waybar.main #custom-spacer4,
+#waybar.main #custom-spacer5,
+#waybar.main #custom-spacer6 {
+  font-size: 16pt;
   font-weight: bold;
-  color: @caution;
-  background: transparent;
+  color: transparent;
+  padding-left: 4px;
+  padding-right: 4px;
+  margin-bottom: -4px;
+  margin-top: -4px;
 }
 
-/* Tooltip */
+#waybar.main #custom-spacer1 {
+  background-image: linear-gradient(
+    63.435deg,
+    @transparent 47.5%,
+    @sepepator 47.6%,
+    @sepepator 52.4%,
+    @background1 52.5%
+  );
+}
+
+#waybar.main #custom-spacer2 {
+  background-image: linear-gradient(
+    63.435deg,
+    @background1 47.5%,
+    @sepepator 47.6%,
+    @sepepator 52.4%,
+    @background2 52.5%
+  );
+}
+
+#waybar.main #custom-spacer3 {
+  background-image: linear-gradient(
+    63.435deg,
+    @background2 47.5%,
+    @sepepator 47.6%,
+    @sepepator 52.4%,
+    @background1 52.5%
+  );
+}
+
+#waybar.main #custom-spacer4 {
+  background-image: linear-gradient(
+    63.435deg,
+    @background1 47.5%,
+    @sepepator 47.6%,
+    @sepepator 52.4%,
+    @background2 52.5%
+  );
+}
+
+#waybar.main #custom-spacer5 {
+  background-image: linear-gradient(
+    -63.435deg,
+    @transparent 47.5%,
+    @sepepator 47.6%,
+    @sepepator 52.4%,
+    transparent 52.5%
+  );
+}
+
+#waybar.main #custom-spacer6 {
+  background-image: linear-gradient(
+    -63.435deg,
+    @transparent 47.5%,
+    @sepepator 47.6%,
+    @sepepator 52.4%,
+    transparent 52.5%
+  );
+}
+
+#waybar.main #tray {
+  background: @background2;
+  color: @process;
+  border-radius: 6pt 0pt 0pt 6pt;
+  padding-left: 4pt;
+}
+
+#waybar.main #custom-trayicon {
+  font-size: 11pt;
+  color: @process;
+
+  font-style: italic;
+  background: transparent;
+  padding-right: 0pt;
+  padding-left: 2pt;
+}
+
 tooltip {
-  background: @background;
+  background: @background1;
   border: 3px solid @caution;
   border-radius: 8px;
   font-weight: 500;
@@ -213,8 +356,7 @@ tooltip {
 }
 
 #waybar.main #tray menu {
-  background: @background;
-  border: 2px solid @caution;
-  border-radius: 0px;
-  padding: 10px 5px;
+  background: @background1;
+  border: 3px solid @caution;
+  border-radius: 8px;
 }

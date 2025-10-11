@@ -4,30 +4,25 @@
   "position": "top",
   "name": "main",
 
+  "margin-top": 6,
   "margin-left": 16,
   "margin-right": 16,
 
-  "modules-left": [
-    "group/traym",
-    "custom/spacer",
-    "hyprland/workspaces",
-    "custom/spacer",
-    "hyprland/window",
-  ],
+  "modules-left": ["group/traym", "hyprland/workspaces", "hyprland/window"],
 
   "modules-right": [
-    "custom/spacer",
+    "custom/spacer1",
     "cpu",
     "temperature",
     "memory",
     "network",
-    "custom/spacer",
+    "custom/spacer2",
     "pulseaudio",
     "backlight",
-    "custom/spacer",
+    "custom/spacer3",
     "custom/fans",
     "battery",
-    "custom/spacer",
+    "custom/spacer4",
     "clock",
   ],
 
@@ -174,7 +169,7 @@
   },
 
   "temperature": {
-    "hwmon-path": "/sys/devices/platform/PNP0C14:02/wmi_bus/wmi_bus-PNP0C14:02/F1DDEE52-063C-4784-A11E-8A06684B9B01/hwmon/hwmon5/temp1_input",
+    "hwmon-path": "/sys/devices/platform/PNP0C14:02/wmi_bus/wmi_bus-PNP0C14:02/F1DDEE52-063C-4784-A11E-8A06684B9B01-7/hwmon/hwmon5/temp1_input",
     "critical-threshold": 90,
     "interval": 4,
     "format": "{icon} {temperatureC}°",
@@ -188,7 +183,37 @@
   },
 
   "custom/spacer": {
-    "format": " \\\\ ",
+    "format": " ",
+    "tooltip": false,
+  },
+
+  "custom/spacer1": {
+    "format": "",
+    "tooltip": false,
+  },
+
+  "custom/spacer2": {
+    "format": "",
+    "tooltip": false,
+  },
+
+  "custom/spacer3": {
+    "format": "",
+    "tooltip": false,
+  },
+
+  "custom/spacer4": {
+    "format": "",
+    "tooltip": false,
+  },
+
+  "custom/spacer5": {
+    "format": "",
+    "tooltip": false,
+  },
+
+  "custom/spacer6": {
+    "format": "",
     "tooltip": false,
   },
 }
