@@ -1,0 +1,32 @@
+#|
+Caps Lock → Esc on tap, Ctrl on hold
+Right Alt + HJKL → Arrow keys (like Vim)
+|#
+
+(defcfg
+  process-unmapped-keys yes
+)
+
+(defsrc
+  caps ralt
+       h    j    k    l
+  lsft rsft
+)
+
+(deflayer default
+  @cap  @ralt
+        _    _    _    _
+  _     _
+)
+
+(deflayer arrows
+  _     _
+        left down up right
+  _     _
+)
+
+(defalias
+  cap (tap-hold-press 200 200 esc lctl)
+  ;; When Right Alt is held, switch to 'arrows' layer.
+  ralt (tap-hold-press 200 200 ralt (layer-toggle arrows))
+)
