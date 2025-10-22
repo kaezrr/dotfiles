@@ -1,6 +1,6 @@
 #|
 Caps Lock → Esc on tap, Ctrl on hold
-Right Alt + HJKL → Arrow keys (like Vim)
+Right Alt + HJKL → Arrow keys
 |#
 
 (defcfg
@@ -28,6 +28,7 @@ Right Alt + HJKL → Arrow keys (like Vim)
 (defalias
   cap (tap-hold-press 150 150 esc lctl)
   ralt (multi ralt (layer-while-held arrows))
+
   nrt (multi (release-key ralt) up)     ;; North
   sth (multi (release-key ralt) down)   ;; South
   est (multi (release-key ralt) right)  ;; East
