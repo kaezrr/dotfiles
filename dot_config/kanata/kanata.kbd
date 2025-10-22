@@ -21,11 +21,15 @@ Right Alt + HJKL → Arrow keys (like Vim)
 
 (deflayer arrows
   _     _
-        left down up right
+        @wst @sth @nrt @est
   _     _
 )
 
 (defalias
-  cap (tap-hold-press 100 100 esc lctl)
+  cap (tap-hold-press 150 150 esc lctl)
   ralt (multi ralt (layer-while-held arrows))
+  nrt (multi (release-key ralt) up)     ;; North
+  sth (multi (release-key ralt) down)   ;; South
+  est (multi (release-key ralt) right)  ;; East
+  wst (multi (release-key ralt) left)   ;; West
 )
