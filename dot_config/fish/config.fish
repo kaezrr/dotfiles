@@ -4,6 +4,7 @@ fish_config theme choose kanagawa
 set -gx PATH $HOME/.local/bin $HOME/.cargo/bin $PATH
 set -gx PAGER bat
 set -gx EDITOR nvim
+set -gx SUDOEDITOR nvim
 set -gx VISUAL nvim
 set -gx MANPAGER 'nvim +Man!'
 set -gx TERMINAL kitty

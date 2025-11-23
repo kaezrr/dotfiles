@@ -30,67 +30,44 @@ background {
 }
 
 input-field {
-    monitor =
-    size = 20%, 5%
-    outline_thickness = 3
-    inner_color = rgba(0, 0, 0, 0.0) # no fill
-
-    outer_color = rgba(c4a7e7ee) rgba(00ff99ee) 45deg
-    check_color = rgba(00ff99ee) rgba(ff6633ee) 120deg
-    fail_color = rgba(ff6633ee) rgba(ff0066ee) 40deg
-
-    font_color = rgb(143, 143, 143)
-    fade_on_empty = false
-    rounding = 15
-
-    font_family = $font
-    placeholder_text = Input password...
-    fail_text = $PAMFAIL
-
-    # uncomment to use a letter instead of a dot to indicate the typed password
-    # dots_text_format = *
-    # dots_size = 0.4
-    dots_spacing = 0.3
-
-    # uncomment to use an input indicator that does not show the password length (similar to swaylock's input indicator)
-    # hide_input = true
-
-    position = 0, -20
-    halign = center
-    valign = center
-}
-
-# TIME
-label {
-    monitor =
-    text = $TIME # ref. https://wiki.hyprland.org/Hypr-Ecosystem/hyprlock/#variable-substitution
-    font_size = 90
-    font_family = $font
-
-    position = -30, 0
-    halign = right
-    valign = top
-}
-
-# DATE
-label {
-    monitor =
-    text = cmd[update:60000] date +"%A, %d %B %Y" # update every 60 seconds
-    font_size = 25
-    font_family = $font
-
-    position = -30, -150
-    halign = right
-    valign = top
+    monitor=
+    size=200,50
+    check_color=rgb(30, 107, 204)
+    dots_center=true
+    dots_size=0.200000
+    dots_spacing=0.350000
+    fade_on_empty=false
+    font_color=rgb(111, 45, 104)
+    halign=center
+    hide_input=false
+    inner_color=rgba(0, 0, 0, 0.2)
+    outer_color=rgba(0, 0, 0, 0)
+    outline_thickness=2
+    font_family=$font
+    placeholder_text=<i><span foreground="##cdd6f4">Input Password...</span></i>
+    position=0, -100
+    rounding=-1
+    valign=center
 }
 
 label {
-    monitor =
-    text = $LAYOUT[en,ru]
-    font_size = 24
-    onclick = hyprctl switchxkblayout all next
+    monitor=
+    color=rgba(242, 243, 244, 0.75)
+    font_family=$font
+    font_size=95
+    halign=center
+    position=0, 300
+    text=$TIME
+    valign=center
+}
 
-    position = 250, -20
-    halign = center
-    valign = center
+label {
+    monitor=
+    color=rgba(242, 243, 244, 0.75)
+    font_family=$font
+    font_size=22
+    halign=center
+    position=0, 200
+    text=cmd[update:1000] echo $(date +"%A, %B %d")
+    valign=center
 }
