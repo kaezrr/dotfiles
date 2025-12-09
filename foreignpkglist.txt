@@ -1,9 +1,13 @@
-bruno-bin
 codelldb-bin
 dell-g15-controller
 duckstation-qt-bin
 google-chrome
+gtk-engine-murrine
+icu66-bin
+kanata
+libffi7
+libwebp0.5
 polychromatic
 rose-pine-gtk-theme-full
-rstudio-desktop-bin
-staruml
+selectdefaultapplication-fork-git
+unityhub

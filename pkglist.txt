@@ -21,6 +21,7 @@ bluez-utils
 brightnessctl
 btop
 btrfs-progs
+ca-certificates-mozilla
 cachyos-gaming-meta
 cachyos-hooks
 cachyos-kernel-manager
@@ -39,6 +40,7 @@ cloudflare-warp-bin
 cpupower
 cryptsetup
 device-mapper
+devtools
 dhclient
 diffutils
 discord
@@ -63,12 +65,15 @@ f2fs-tools
 fastfetch
 ffmpegthumbnailer
 fish
+freedownloadmanager
 fsarchiver
 fuzzel
 fzf
+gdb
 git
 glances
 go
+godot
 gopls
 greetd
 greetd-tuigreet
@@ -77,12 +82,10 @@ gst-plugin-pipewire
 gst-plugin-va
 gst-plugins-bad
 gst-plugins-ugly
-gtk-engine-murrine
 gvfs
 gvfs-mtp
 haveged
 hdparm
-helix
 hwdetect
 hwinfo
 hypridle
@@ -108,10 +111,12 @@ libgsf
 libopenraw
 libva-nvidia-driver
 libwnck3
+libxml2-legacy
 linux-cachyos
 linux-cachyos-headers
 linux-cachyos-nvidia-open
 linux-firmware
+localsend
 logrotate
 lsb-release
 lsscsi
@@ -145,6 +150,7 @@ noto-fonts-cjk
 noto-fonts-emoji
 nss-mdns
 ntp
+nvidia-container-toolkit
 nvidia-prime
 nvidia-settings
 nvidia-utils
@@ -157,6 +163,7 @@ opencl-nvidia
 opendesktop-fonts
 openrazer-daemon
 openssh
+ouch
 pacman-contrib
 paru
 pavucontrol
@@ -182,6 +189,8 @@ reflector
 ripgrep
 rsync
 rtkit
+rust-analyzer
+rustup
 s-nail
 sassc
 sg3_utils
@@ -204,7 +213,6 @@ tmux
 tokei
 ttf-bitstream-vera
 ttf-dejavu
-ttf-iosevka-nerd
 ttf-jetbrains-mono-nerd
 ttf-liberation
 ttf-meslo-nerd
@@ -220,7 +228,6 @@ usb_modeswitch
 usbutils
 vi
 vim
-vlc
 vscode-css-languageserver
 vulkan-radeon
 waybar
@@ -241,11 +248,13 @@ xf86-video-amdgpu
 xfsprogs
 xl2tpd
 xorg-server
+xorg-server-xvfb
 xorg-xdpyinfo
 xorg-xinit
 xorg-xinput
 xorg-xkill
 xorg-xrandr
+yazi
 zathura
 zathura-pdf-poppler
 zen-browser-bin

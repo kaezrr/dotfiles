@@ -1,0 +1,7 @@
+{{- $font := promptStringOnce . "font" "Font Family" -}}
+
+[data]
+    font = {{ $font | quote }}
+
+[git]
+    autoCommit = true
