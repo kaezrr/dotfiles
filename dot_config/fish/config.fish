@@ -13,7 +13,6 @@ set -g fish_greeting
 
 # Aliases
 alias vi nvim
-alias hx helix
 alias vv "NVIM_APPNAME=nvim-new nvim"
 alias ll "eza -l --icons=auto --group-directories-first"
 alias la "eza -lA --icons=auto --group-directories-first"
