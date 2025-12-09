@@ -17,7 +17,8 @@ set -g fish_greeting
 # Fisher auto-install + plugins
 # -------------------------------
 if status is-interactive && not functions --query fisher
-    curl -sL https://git.io/fisher | source
+    echo "Installing Fisher and plugins..."
+    curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source
     fisher update
 end
 
