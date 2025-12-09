@@ -33,9 +33,8 @@ These dotfiles configure the tools I use daily:
 
 ## ⚙️ Installation
 
-All my dotfiles are managed through [chezmoi](https://www.chezmoi.io/). The following set of commands is the quickest way to try out this configuration!
+All my dotfiles are managed through [chezmoi](https://www.chezmoi.io/). The following command is the quickest way to try out this configuration!
 
 ```bash
-chezmoi init kaezrr
-chezmoi apply
+sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply kaezrr
 ```
