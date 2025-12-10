@@ -4,8 +4,12 @@ README.md
 # If NOT my machine, ignore everything except the allowed directories
 {{- if ne .chezmoi.hostname "fort-gael" }}
 
-!.tmux/
-!.config/nvim/
-!.config/fish/
+*
+.config/*
+
+!.tmux.conf
+!.config
+!.config/nvim
+!.config/fish
 
 {{- end }}

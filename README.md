@@ -33,8 +33,16 @@ These dotfiles configure the tools I use daily:
 
 ## ⚙️ Installation
 
-All my dotfiles are managed through [chezmoi](https://www.chezmoi.io/). The following command is the quickest way to try out this configuration!
+All my dotfiles are managed through [chezmoi](https://www.chezmoi.io/).
+
+Install chemzoi through your package manager (recommended) and then use it like this:
 
 ```bash
-sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply kaezrr
+chezmoi init --apply kaezrr
+```
+
+For transitory environments:
+
+```bash
+sh -c "$(curl -fsLS get.chezmoi.io)" -- init --one-shot kaezrr
 ```
