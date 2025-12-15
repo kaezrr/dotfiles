@@ -4,7 +4,7 @@ fish_config theme choose kanagawa
 # Environment variables
 # -------------------------------
 set -gx PATH $HOME/.local/bin $HOME/.cargo/bin $PATH
-set -gx PAGER bat
+set -gx PAGER less
 set -gx EDITOR nvim
 set -gx SUDOEDITOR nvim
 set -gx VISUAL nvim
