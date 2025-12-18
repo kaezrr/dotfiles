@@ -48,6 +48,7 @@ dmidecode
 dmraid
 dnsmasq
 docker
+docker-buildx
 docker-compose
 dosfstools
 downgrade
@@ -75,8 +76,6 @@ glances
 go
 godot
 gopls
-greetd
-greetd-tuigreet
 gst-libav
 gst-plugin-pipewire
 gst-plugin-va
@@ -99,6 +98,8 @@ iptables-nft
 iwd
 jfsutils
 jre11-openjdk
+jupyter-notebook
+just
 kitty
 kvantum
 less
@@ -123,6 +124,7 @@ lsscsi
 lua-language-server
 lutris
 lvm2
+ly
 man-db
 man-pages
 mangohud
@@ -157,7 +159,6 @@ nvidia-utils
 nvtop
 nwg-look
 obs-studio
-obsidian
 octopi
 opencl-nvidia
 opendesktop-fonts
@@ -196,6 +197,7 @@ sassc
 sg3_utils
 smartmontools
 sof-firmware
+sqlitebrowser
 steam
 stylua
 sudo
@@ -203,7 +205,6 @@ swaybg
 swaync
 swayosd
 switcheroo-control
-syncthing
 sysfsutils
 systemd-boot-manager
 texinfo
@@ -211,6 +212,7 @@ thunar
 thunar-volman
 tmux
 tokei
+tree-sitter-cli
 ttf-bitstream-vera
 ttf-dejavu
 ttf-jetbrains-mono-nerd
