@@ -6,6 +6,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
   ---@type snacks.Config
   opts = {
     picker = {},
+    bigfile = {},
     notifier = {
       enabled = true,
       timeout = 3000,
@@ -30,6 +31,11 @@ return { -- Fuzzy Finder (files, lsp, etc)
 
   -- See `:help snacks-pickers-sources`
   keys = {
+    {
+      '<leader>gg',
+      function() Snacks.lazygit.open() end,
+      desc = 'Open Lazygit',
+    },
     {
       '<leader>sh',
       function() Snacks.picker.help() end,
