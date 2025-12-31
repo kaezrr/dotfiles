@@ -12,6 +12,7 @@ set -gx MANPAGER 'nvim +Man!'
 set -gx TERMINAL kitty
 set -gx NVM_COMPLETION true
 set -g fish_greeting
+set -g fish_key_bindings fish_default_key_bindings
 
 # -------------------------------
 # Fisher auto-install + plugins
