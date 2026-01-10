@@ -140,6 +140,10 @@ return {
           },
         },
       },
+
+      zls = {
+        languages = { 'zig' },
+      },
     }
 
     local augroup = vim.api.nvim_create_augroup('lsp', { clear = true })
