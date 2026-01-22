@@ -39,6 +39,7 @@ return { -- Autoformat
       typescriptreact = { 'prettier' },
       rust = { 'rustfmt' },
       yaml = { 'prettier' },
+      toml = { 'tombi' },
       python = { 'black' },
       go = { 'gofmt' },
     },

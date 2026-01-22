@@ -91,21 +91,10 @@ return {
     local lsp = {
       clangd = {
         languages = { 'c', 'cpp' },
-        config = {
-          cmd = { 'clangd', '--header-insertion=never' },
-        },
       },
 
       lua_ls = {
         languages = { 'lua' },
-        config = {
-          settings = {
-            Lua = {
-              completion = { callSnippet = 'Replace' },
-              diagnostics = { disable = { 'missing-fields' } },
-            },
-          },
-        },
       },
 
       rust_analyzer = {
@@ -134,11 +123,6 @@ return {
 
       cssls = {
         languages = { 'css' },
-        config = {
-          settings = {
-            css = { validate = true, lint = { unknownAtRules = 'ignore' } },
-          },
-        },
       },
 
       zls = {
