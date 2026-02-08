@@ -1,0 +1,179 @@
+input {
+    keyboard {
+        xkb { }
+        numlock
+    }
+
+    touchpad {
+        tap
+        natural-scroll
+    }
+}
+
+layout {
+    gaps 8
+
+    center-focused-column "never"
+
+    preset-column-widths {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+    }
+
+    default-column-width { proportion 0.5; }
+
+    focus-ring {
+        width 1
+        active-color "#4d6f87"
+        inactive-color "#505050"
+    }
+
+    border {
+        off
+    }
+
+    background-color "transparent"
+}
+
+spawn-at-startup "qs" "-c" "noctalia-shell"
+
+prefer-no-csd
+
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+
+animations {
+    slowdown 0.7
+}
+
+// Open the Firefox picture-in-picture player as floating by default.
+window-rule {
+    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    open-floating true
+}
+
+layer-rule {
+  match namespace="^noctalia-wallpaper*"
+  place-within-backdrop true
+}
+
+overview {
+  workspace-shadow {
+    off
+  }
+}
+
+binds {
+    Mod+Shift+Slash { show-hotkey-overlay; }
+
+    Mod+T { spawn "kitty"; }
+    Mod+E { spawn "thunar"; }
+    Mod+Z { spawn "zen-browser"; }
+
+    Mod+W { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "controlCenter" "toggle"; }
+    Mod+I { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "settings" "toggle"; }
+    Mod+X { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "sessionMenu" "toggle"; }
+    Mod+V { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "launcher" "clipboard"; }
+
+    Alt+Space { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
+    Super+Alt+L { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
+
+    XF86AudioRaiseVolume allow-when-locked=true { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "increase"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "decrease"; }
+    XF86AudioMute        allow-when-locked=true { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "muteOutput"; }
+    XF86AudioMicMute     allow-when-locked=true { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "muteInput"; }
+
+    Alt+period { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "increase"; }
+    Alt+comma { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "decrease"; }
+    Alt+slash { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "muteOutput"; }
+
+    XF86MonBrightnessUp { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "brightness" "increase"; }
+    XF86MonBrightnessDown { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "brightness" "decrease"; }
+
+    XF86AudioNext allow-when-locked=true { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "media" "next"; }
+    XF86AudioPause allow-when-locked=true { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "media" "pause"; }
+    XF86AudioPlay allow-when-locked=true { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "media" "play"; }
+    XF86AudioPrev  allow-when-locked=true { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "media" "previous"; }
+
+    Mod+O repeat=false { toggle-overview; }
+
+    Mod+N { focus-workspace-down; }
+    Mod+P { focus-workspace-up; }
+
+    Mod+Q { close-window; }
+
+    Mod+H     { focus-column-left; }
+    Mod+J     { focus-window-down; }
+    Mod+K     { focus-window-up; }
+    Mod+L     { focus-column-right; }
+
+    Mod+Shift+H     { move-column-left; }
+    Mod+Shift+J     { move-window-down; }
+    Mod+Shift+K     { move-window-up; }
+    Mod+Shift+L     { move-column-right; }
+
+    Mod+Home { focus-column-first; }
+    Mod+End  { focus-column-last; }
+    Mod+Ctrl+Home { move-column-to-first; }
+    Mod+Ctrl+End  { move-column-to-last; }
+
+    Mod+Ctrl+H     { focus-monitor-left; }
+    Mod+Ctrl+J     { focus-monitor-down; }
+    Mod+Ctrl+K     { focus-monitor-up; }
+    Mod+Ctrl+L     { focus-monitor-right; }
+
+    Mod+Shift+Ctrl+H     { move-column-to-monitor-left; }
+    Mod+Shift+Ctrl+J     { move-column-to-monitor-down; }
+    Mod+Shift+Ctrl+K     { move-column-to-monitor-up; }
+    Mod+Shift+Ctrl+L     { move-column-to-monitor-right; }
+
+    Mod+1 { focus-workspace 1; }
+    Mod+2 { focus-workspace 2; }
+    Mod+3 { focus-workspace 3; }
+    Mod+4 { focus-workspace 4; }
+    Mod+5 { focus-workspace 5; }
+    Mod+6 { focus-workspace 6; }
+    Mod+7 { focus-workspace 7; }
+    Mod+8 { focus-workspace 8; }
+    Mod+9 { focus-workspace 9; }
+
+    Mod+Shift+1 { move-column-to-workspace 1; }
+    Mod+Shift+2 { move-column-to-workspace 2; }
+    Mod+Shift+3 { move-column-to-workspace 3; }
+    Mod+Shift+4 { move-column-to-workspace 4; }
+    Mod+Shift+5 { move-column-to-workspace 5; }
+    Mod+Shift+6 { move-column-to-workspace 6; }
+    Mod+Shift+7 { move-column-to-workspace 7; }
+    Mod+Shift+8 { move-column-to-workspace 8; }
+    Mod+Shift+9 { move-column-to-workspace 9; }
+
+    Mod+R { switch-preset-column-width; }
+    Mod+Shift+R { switch-preset-window-height; }
+    Mod+Ctrl+R { reset-window-height; }
+
+    Mod+F { maximize-column; }
+    Mod+Shift+F { fullscreen-window; }
+
+    Mod+C { center-column; }
+    Mod+Ctrl+C { center-visible-columns; }
+
+    Mod+Minus { set-column-width "-10%"; }
+    Mod+Equal { set-column-width "+10%"; }
+
+    Mod+Shift+Minus { set-window-height "-10%"; }
+    Mod+Shift+Equal { set-window-height "+10%"; }
+
+    Mod+B       { toggle-window-floating; }
+
+    Mod+S { screenshot; }
+    Print { screenshot-screen; }
+    Alt+Print { screenshot-window; }
+
+    Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+
+    Mod+Shift+P { power-off-monitors; }
+}
+
+debug {
+  honor-xdg-activation-with-invalid-serial
+}
