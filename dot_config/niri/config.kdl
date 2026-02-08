@@ -37,6 +37,7 @@ layout {
 }
 
 spawn-at-startup "qs" "-c" "noctalia-shell"
+spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 
 prefer-no-csd
 
@@ -72,6 +73,7 @@ binds {
 
     Mod+W { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "controlCenter" "toggle"; }
     Mod+I { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "settings" "toggle"; }
+    Mod+M { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "systemMonitor" "toggle"; }
     Mod+X { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "sessionMenu" "toggle"; }
     Mod+V { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "launcher" "clipboard"; }
 
@@ -83,9 +85,9 @@ binds {
     XF86AudioMute        allow-when-locked=true { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "muteOutput"; }
     XF86AudioMicMute     allow-when-locked=true { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "muteInput"; }
 
-    Alt+period { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "increase"; }
-    Alt+comma { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "decrease"; }
-    Alt+slash { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "muteOutput"; }
+    Alt+Period { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "increase"; }
+    Alt+Comma { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "decrease"; }
+    Alt+Slash { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "muteOutput"; }
 
     XF86MonBrightnessUp { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "brightness" "increase"; }
     XF86MonBrightnessDown { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "brightness" "decrease"; }
@@ -99,6 +101,9 @@ binds {
 
     Mod+N { focus-workspace-down; }
     Mod+P { focus-workspace-up; }
+
+    Mod+Shift+N { move-workspace-down; }
+    Mod+Shift+P { move-workspace-up; }
 
     Mod+Q { close-window; }
 
@@ -170,8 +175,6 @@ binds {
     Alt+Print { screenshot-window; }
 
     Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
-
-    Mod+Shift+P { power-off-monitors; }
 }
 
 debug {
