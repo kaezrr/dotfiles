@@ -41,6 +41,6 @@ overview {
   workspace-shadow {
     off
   }
-  backdrop-color "#000000"
+  backdrop-color "black"
 }
 
