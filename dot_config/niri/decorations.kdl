@@ -1,0 +1,46 @@
+layout {
+    gaps 8
+
+    center-focused-column "never"
+
+    preset-column-widths {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+    }
+
+    default-column-width { proportion 1.0; }
+
+    focus-ring {
+        width 1
+        active-color "#4d6f87"
+        inactive-color "#505050"
+    }
+
+    border {
+        off
+    }
+
+    background-color "transparent"
+}
+
+
+prefer-no-csd
+
+
+animations {
+    slowdown 0.7
+}
+
+layer-rule {
+  match namespace="^noctalia-wallpaper*"
+  place-within-backdrop true
+}
+
+overview {
+  workspace-shadow {
+    off
+  }
+  backdrop-color "#000000"
+}
+

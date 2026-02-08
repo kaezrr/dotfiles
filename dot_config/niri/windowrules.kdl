@@ -1,0 +1,5 @@
+window-rule {
+    match app-id=r#"zen-browser$"# title="^Picture-in-Picture$"
+    open-floating true
+}
+
