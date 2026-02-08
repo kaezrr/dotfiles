@@ -1,6 +1,5 @@
 input {
     keyboard {
-        xkb { }
         numlock
     }
 
@@ -21,7 +20,7 @@ layout {
         proportion 0.66667
     }
 
-    default-column-width { proportion 0.5; }
+    default-column-width { proportion 1.0; }
 
     focus-ring {
         width 1
@@ -62,6 +61,17 @@ overview {
   workspace-shadow {
     off
   }
+  backdrop-color "#000000"
+}
+
+hotkey-overlay {
+    skip-at-startup
+}
+
+gestures {
+    hot-corners {
+        off
+    }
 }
 
 binds {
@@ -71,7 +81,7 @@ binds {
     Mod+E { spawn "thunar"; }
     Mod+Z { spawn "zen-browser"; }
 
-    Mod+W { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "controlCenter" "toggle"; }
+    Mod+W { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "network" "togglePanel"; }
     Mod+I { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "settings" "toggle"; }
     Mod+M { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "systemMonitor" "toggle"; }
     Mod+X { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "sessionMenu" "toggle"; }
