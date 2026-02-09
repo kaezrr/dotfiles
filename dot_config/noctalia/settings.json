@@ -19,7 +19,7 @@
         "showCategories": false,
         "showIconBackground": false,
         "sortByMostUsed": true,
-        "terminalCommand": "alacritty -e",
+        "terminalCommand": "kitty -e",
         "useApp2Unit": false,
         "viewMode": "list"
     },
@@ -54,7 +54,7 @@
         "position": "top",
         "screenOverrides": [
         ],
-        "showCapsule": true,
+        "showCapsule": false,
         "showOutline": false,
         "useSeparateOpacity": false,
         "widgets": {
@@ -401,7 +401,7 @@
             1,
             2
         ],
-        "location": "top_right",
+        "location": "bottom",
         "monitors": [
         ],
         "overlayLayer": true
