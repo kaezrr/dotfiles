@@ -19,12 +19,6 @@ hotkey-overlay {
     hide-not-bound
 }
 
-gestures {
-    hot-corners {
-        off
-    }
-}
-
 debug {
   honor-xdg-activation-with-invalid-serial
 }
