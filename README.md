@@ -2,7 +2,9 @@
 
 Personal dotfiles for a minimal and highly customized Linux setup, built around Niri and Noctalia Shell.
 
-## ⚙️ Installation
+![showcase](/Pictures/screenshots/showcase.png)
+
+## Installation
 
 All my dotfiles are managed through [chezmoi](https://www.chezmoi.io/).
 
