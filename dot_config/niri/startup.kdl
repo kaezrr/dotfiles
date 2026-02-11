@@ -1,6 +1,7 @@
 environment {
     QT_QPA_PLATFORM "wayland"
     QT_QPA_PLATFORMTHEME "qt6ct"
+    GSK_RENDERER "gl"
 }
 
 spawn-at-startup "qs" "-c" "noctalia-shell"

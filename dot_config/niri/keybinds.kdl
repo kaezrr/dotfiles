@@ -2,7 +2,7 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     Mod+T { spawn "kitty"; }
-    Mod+E { spawn "thunar"; }
+    Mod+E { spawn "nautilus"; }
     Mod+Z { spawn "zen-browser"; }
 
     Mod+W hotkey-overlay-title="Toggle Network Panel" {

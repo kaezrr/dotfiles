@@ -9,6 +9,11 @@ window-rule {
 }
 
 window-rule {
+    match app-id="org.gnome.Nautilus" title="Open Files"
+    open-floating true
+}
+
+window-rule {
     match app-id="kitty"
     default-column-width { proportion 0.5; }
 }
