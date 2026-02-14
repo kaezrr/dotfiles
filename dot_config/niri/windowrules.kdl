@@ -14,6 +14,11 @@ window-rule {
 }
 
 window-rule {
+    match app-id="python3" title="Dell G Series Controller"
+    open-floating true
+}
+
+window-rule {
     match app-id="kitty"
     default-column-width { proportion 0.5; }
 }
