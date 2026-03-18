@@ -128,6 +128,10 @@ return {
       zls = {
         languages = { 'zig' },
       },
+
+      wgsl_analyzer = {
+        languages = { 'wgsl' },
+      },
     }
 
     local augroup = vim.api.nvim_create_augroup('lsp', { clear = true })
