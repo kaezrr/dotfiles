@@ -91,6 +91,12 @@ return {
     local lsp = {
       clangd = {
         languages = { 'c', 'cpp' },
+        config = {
+          cmd = {
+            'clangd',
+            '--header-insertion=never',
+          },
+        },
       },
 
       lua_ls = {
@@ -104,6 +110,9 @@ return {
             ['rust-analyzer'] = {
               checkOnSave = true,
               check = { command = 'clippy' },
+              rustfmt = {
+                extraArgs = { '+nightly' },
+              },
             },
           },
         },
