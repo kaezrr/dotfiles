@@ -118,28 +118,8 @@ return {
         },
       },
 
-      ts_ls = {
-        languages = { 'javascript', 'typescript', 'typescriptreact', 'javascriptreact' },
-      },
-
-      pyright = {
+      ty = {
         languages = { 'python' },
-      },
-
-      gopls = {
-        languages = { 'go' },
-      },
-
-      cssls = {
-        languages = { 'css' },
-      },
-
-      zls = {
-        languages = { 'zig' },
-      },
-
-      wgsl_analyzer = {
-        languages = { 'wgsl' },
       },
     }
 

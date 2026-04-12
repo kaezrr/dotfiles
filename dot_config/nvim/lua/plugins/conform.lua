@@ -26,21 +26,14 @@ return { -- Autoformat
 
     formatters_by_ft = {
       lua = { 'stylua' },
-      html = { 'prettier' },
-      css = { 'prettier' },
       cpp = { 'clang-format' },
       c = { 'clang-format' },
       markdown = { 'prettier' },
       json = { 'prettier' },
       jsonc = { 'prettier' },
-      javascript = { 'prettier' },
-      javascriptreact = { 'prettier' },
-      typescript = { 'prettier' },
-      typescriptreact = { 'prettier' },
       yaml = { 'prettier' },
       toml = { 'tombi' },
-      python = { 'black' },
-      go = { 'gofmt' },
+      python = { 'ruff_format' },
     },
   },
 }
