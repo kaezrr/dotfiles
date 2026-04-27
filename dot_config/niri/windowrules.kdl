@@ -31,8 +31,3 @@ window-rule {
 window-rule {
     variable-refresh-rate true;
 }
-
-window-rule {
-    match is-active=false;
-    opacity 0.90;
-}
