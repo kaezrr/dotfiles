@@ -24,10 +24,5 @@ window-rule {
 }
 
 window-rule {
-    match app-id="kitty"
-    default-column-width { proportion 0.5; }
-}
-
-window-rule {
     variable-refresh-rate true;
 }
