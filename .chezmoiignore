@@ -2,7 +2,7 @@ README.md
 *pkglist.txt
 
 # If NOT my machine, ignore everything except the allowed directories
-{{- if ne .chezmoi.hostname "fort-gael" }}
+{{- if ne .chezmoi.hostname "midir" }}
 
 *
 .config/*
