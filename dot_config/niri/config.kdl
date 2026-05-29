@@ -6,6 +6,9 @@ include "keybinds.kdl"
 input {
     keyboard {
         numlock
+        xkb {
+            options "ctrl:nocaps"
+        }
     }
 
     touchpad {
