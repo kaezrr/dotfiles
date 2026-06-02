@@ -35,5 +35,14 @@ window-rule {
 }
 
 window-rule {
-    variable-refresh-rate true;
+  match app-id="dev.noctalia.Noctalia.Settings"
+  open-floating true
+  default-column-width { fixed 1080; }
+  default-window-height { fixed 920; }
+}
+
+window-rule {
+  geometry-corner-radius 10
+  variable-refresh-rate true;
+  clip-to-geometry true
 }

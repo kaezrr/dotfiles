@@ -32,15 +32,16 @@ animations {
     slowdown 0.7
 }
 
-layer-rule {
-  match namespace="^noctalia-overview*"
-  place-within-backdrop true
-}
 
 overview {
   workspace-shadow {
     off
   }
   backdrop-color "black"
+}
+
+layer-rule {
+  match namespace="^noctalia-backdrop"
+  place-within-backdrop true
 }
 
