@@ -102,5 +102,10 @@ return { -- Fuzzy Finder (files, lsp, etc)
       function() Snacks.picker.files { cwd = vim.fn.stdpath 'config' } end,
       desc = '[S]earch [N]eovim files',
     },
+    {
+      '<leader>n',
+      function() Snacks.notifier.show_history() end,
+      desc = '[N]otification history',
+    },
   },
 }
