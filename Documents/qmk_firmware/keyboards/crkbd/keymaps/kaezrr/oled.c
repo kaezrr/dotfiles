@@ -16,6 +16,9 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include QMK_KEYBOARD_H
+#include <stdio.h>
+
 // OLED setup
 #define IDLE_FRAMES 5
 #define IDLE_SPEED 30
@@ -62,13 +65,11 @@ static void render_status(void) {
             oled_write_P(PSTR("MODES"), false);
             break;
         case 2:
-            oled_write_P(PSTR("SYMBL"), false);
-        break;
-    // Layer 1
-        case 1:
             oled_write_P(PSTR("NUMBR"), false);
+        break;
+        case 1:
+            oled_write_P(PSTR("SYMBL"), false);
             break;
-        // Layer 0
         default:
             oled_write_P(PSTR("ALPHA"), false);
             break;
