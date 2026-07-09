@@ -103,10 +103,6 @@ return {
         languages = { 'lua' },
       },
 
-      zls = {
-        languages = { 'zig' },
-      },
-
       rust_analyzer = {
         languages = { 'rust' },
         config = {

@@ -33,6 +33,7 @@ return { -- Autoformat
       jsonc = { 'prettier' },
       yaml = { 'prettier' },
       toml = { 'tombi' },
+      sql = { 'sql_formatter' },
       python = { 'ruff_format' },
     },
   },

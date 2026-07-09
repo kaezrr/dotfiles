@@ -20,12 +20,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #pragma once
 
-
-
 #define MASTER_LEFT
 #define SPLIT_WPM_ENABLE
+
 #define TAPPING_FORCE_HOLD
-#define TAPPING_TERM 100
+#define TAPPING_TERM 150
+#define RETRO_TAPPING
 
 #ifdef RGB_MATRIX_ENABLE
 #    define RGB_MATRIX_DEFAULT_ON true
