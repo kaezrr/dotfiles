@@ -18,50 +18,79 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include QMK_KEYBOARD_H
 
+enum custom_keycodes {
+    GUI_LM3 = SAFE_RANGE,
+};
+
+static uint16_t gui_lm3_timer;
+static bool gui_lm3_held = false;
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case GUI_LM3:
+            if (record->event.pressed) {
+                gui_lm3_timer = timer_read();
+                gui_lm3_held = true;
+                layer_on(3);
+                register_code(KC_LGUI);   // real mod, active immediately for hold-chords
+            } else {
+                layer_off(3);
+                unregister_code(KC_LGUI);
+                if (timer_elapsed(gui_lm3_timer) < TAPPING_TERM) {
+                    // it was a tap, not a hold: arm one-shot GUI for next keypress
+                    set_oneshot_mods(MOD_BIT(KC_LGUI));
+                }
+                gui_lm3_held = false;
+            }
+            return false;
+    }
+    return true;
+}
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [0] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-       KC_TAB,    KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,                         KC_J,    KC_L,    KC_U,    KC_Y, KC_SCLN,  KC_DEL,
+       KC_TAB,    KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,                         KC_J,    KC_L,    KC_U,    KC_Y, KC_SCLN,  KC_ESC,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LCTL,    KC_A,    KC_R,    KC_S,    KC_T,    KC_G,                         KC_M,    KC_N,    KC_E,    KC_I,    KC_O, KC_QUOT,
+      GUI_LM3,    KC_A,    KC_R,    KC_S,    KC_T,    KC_G,                         KC_M,    KC_N,    KC_E,    KC_I,    KC_O, KC_QUOT,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,                         KC_K,    KC_H, KC_COMM,  KC_DOT, KC_SLSH, KC_RSFT,
+      OS_LCTL,    KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,                         KC_K,    KC_H, KC_COMM,  KC_DOT, KC_SLSH, OS_RALT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                   LCTL_T(KC_ESC),LGUI_T(KC_SPC),MO(1), LT(2,KC_ENT),RALT_T(KC_BSPC),KC_RSFT
+                                           OSL(1),  KC_SPC, OS_LSFT,   KC_ENT,  KC_BSPC,   OSL(2)
                                       //`--------------------------'  `--------------------------'
   ),
 
-    [1] = LAYOUT_split_3x6_3(
+[1] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-       KC_GRV, KC_EXLM,   KC_AT, KC_HASH,  KC_DLR, KC_PERC,                      KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_TILD,
+       KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                         KC_6,    KC_7,    KC_8,    KC_9,    KC_0,   XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______, KC_QUES, KC_SLSH, KC_QUOT, KC_LCBR, KC_LBRC,                      KC_RBRC, KC_RCBR, KC_DQUO, KC_BSLS, KC_PIPE, XXXXXXX,
+       XXXXXXX, KC_LCBR, KC_LBRC, KC_LPRN, KC_EQL,  KC_MINS,                     KC_UNDS, KC_PLUS, KC_RPRN, KC_RBRC, KC_RCBR, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______, XXXXXXX, XXXXXXX, XXXXXXX,  KC_EQL, KC_PLUS,                      KC_UNDS, KC_MINS, XXXXXXX, XXXXXXX, XXXXXXX, _______,
+       KC_TILD, KC_DLR,  KC_PERC, KC_ASTR, KC_AMPR, KC_PIPE,                     KC_LT,   KC_GT,   KC_HASH, KC_AT,   KC_CIRC, KC_BSLS,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          _______, _______, _______,       MO(3), _______, _______
+                                          _______, _______, _______,       _______, _______, _______
                                       //`--------------------------'  `--------------------------'
   ),
 
-    [2] = LAYOUT_split_3x6_3(
+[2] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      XXXXXXX,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                         KC_6,    KC_7,    KC_8,    KC_9,    KC_0, XXXXXXX,
+       XXXXXXX, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_BRIU,                     KC_VOLU, KC_MPRV, KC_MSTP, KC_MPLY, KC_MNXT, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______, KC_HOME, KC_PGDN, KC_PGUP,  KC_END, XXXXXXX,                      XXXXXXX, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, XXXXXXX, 
+       XXXXXXX, KC_F5,   KC_F6,   KC_F7,   KC_F8,   RM_TOGG,                     KC_MUTE, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
+       XXXXXXX, KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_BRID,                     KC_VOLD, KC_HOME, KC_PGDN, KC_PGUP, KC_END,  XXXXXXX,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          _______, _______,   MO(3),     _______, _______, _______
+                                          _______, KC_PSCR, _______,       _______, KC_DEL, _______
                                       //`--------------------------'  `--------------------------'
   ),
 
     [3] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      RM_TOGG,   KC_F1,   KC_F2,   KC_F3,   KC_F4, XXXXXXX,                      XXXXXXX, XXXXXXX, KC_BRID, KC_BRIU, XXXXXXX, KC_PSCR,
+      XXXXXXX,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                         KC_6,    KC_7,    KC_8,    KC_9,    KC_0, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______,   KC_F5,   KC_F6,   KC_F7,   KC_F8, XXXXXXX,                      XXXXXXX, KC_MPLY, KC_VOLD, KC_VOLU, KC_MUTE, XXXXXXX, 
+      _______, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX,                      XXXXXXX, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, XXXXXXX, 
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______,   KC_F9,  KC_F10,  KC_F11,  KC_F12, XXXXXXX,                      XXXXXXX, XXXXXXX, KC_MPRV, KC_MNXT, XXXXXXX, _______,
+      _______, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           _______, _______, _______,     _______, _______, _______
                                       //`--------------------------'  `--------------------------'
