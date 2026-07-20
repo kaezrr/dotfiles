@@ -3,11 +3,7 @@ binds {
 
     Mod+T { spawn "kitty"; }
     Mod+E { spawn-sh "kitty -e yazi"; }
-    Mod+Z { spawn "zen-browser"; }
-
-    Mod+W hotkey-overlay-title="Toggle Network Panel" {
-        spawn-sh "noctalia msg panel-toggle control-center network";
-    }
+    Mod+B { spawn "zen-browser"; }
 
     Mod+M hotkey-overlay-title="Toggle System Monitor" {
         spawn-sh "noctalia msg panel-toggle control-center system";
@@ -21,16 +17,16 @@ binds {
         spawn-sh "noctalia msg panel-toggle session";
     }
 
+    Mod+Shift+X hotkey-overlay-title="Lock Screen" {
+        spawn-sh "noctalia msg session lock";
+    }
+
     Mod+V hotkey-overlay-title="Open Clipboard Launcher" {
         spawn-sh "noctalia msg panel-toggle clipboard";
     }
 
-    Alt+Space hotkey-overlay-title="Toggle App Launcher" {
+    Mod+Space hotkey-overlay-title="Toggle App Launcher" {
         spawn-sh "noctalia msg panel-toggle launcher";
-    }
-
-    Super+Alt+L hotkey-overlay-title="Lock Screen" {
-        spawn-sh "noctalia msg session lock";
     }
 
     XF86AudioRaiseVolume allow-when-locked=true hotkey-overlay-title="Increase Volume" {
@@ -108,11 +104,6 @@ binds {
     Mod+Shift+K     { move-window-up; }
     Mod+Shift+L     { move-column-right; }
 
-    Mod+Home { focus-column-first; }
-    Mod+End  { focus-column-last; }
-    Mod+Ctrl+Home { move-column-to-first; }
-    Mod+Ctrl+End  { move-column-to-last; }
-
     Mod+Ctrl+H     { focus-monitor-left; }
     Mod+Ctrl+J     { focus-monitor-down; }
     Mod+Ctrl+K     { focus-monitor-up; }
@@ -150,16 +141,13 @@ binds {
     Mod+F { maximize-column; }
     Mod+Shift+F { fullscreen-window; }
 
-    Mod+C { center-column; }
-    Mod+Ctrl+C { center-visible-columns; }
-
     Mod+Minus { set-column-width "-10%"; }
     Mod+Equal { set-column-width "+10%"; }
 
     Mod+Shift+Minus { set-window-height "-10%"; }
     Mod+Shift+Equal { set-window-height "+10%"; }
 
-    Mod+B       { toggle-window-floating; }
+    Mod+D       { toggle-window-floating; }
 
     Mod+S { screenshot; }
     Mod+Shift+S { screenshot-window; }
