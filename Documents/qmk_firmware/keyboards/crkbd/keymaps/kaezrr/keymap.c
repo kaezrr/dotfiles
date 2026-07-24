@@ -28,7 +28,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       RM_VALD,  LALT_T(KC_Z),LCTL_T(KC_X),LT(1,KC_C),LGUI_T(KC_D),KC_V,            KC_K, RGUI_T(KC_H),LT(1,KC_COMM),RCTL_T(KC_DOT),RALT_T(KC_SLSH),RM_NEXT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                           LM(3, MOD_LGUI),  KC_SPC, OS_LSFT,   KC_ENT,  KC_BSPC,   MO(2)
+                                      OS_LSFT, LM(3, MOD_LGUI),KC_SPC,  LT(2, KC_ENT),  KC_BSPC,   OS_RSFT
                                       //`--------------------------'  `--------------------------'
   ),
 
@@ -38,7 +38,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
        XXXXXXX, KC_LCBR, KC_LBRC, KC_LPRN, KC_EQL,  KC_MINS,                     KC_UNDS, KC_PLUS, KC_RPRN, KC_RBRC, KC_RCBR, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-       KC_TILD, KC_DLR,  KC_PERC, KC_ASTR, KC_AMPR, KC_PIPE,                     KC_LT,   KC_GT,   KC_HASH,   KC_AT, KC_CIRC, KC_BSLS,
+       KC_TILD, KC_EXLM,  KC_AT, KC_HASH, KC_DLR, KC_PERC,                     KC_CIRC,   KC_AMPR,   KC_ASTR,   KC_PIPE, KC_BSLS, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           _______, _______, _______,       _______, _______, _______
                                       //`--------------------------'  `--------------------------'
@@ -46,11 +46,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [2] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-       RM_HUEU, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_BRIU,                     KC_VOLU, KC_MPRV, KC_MSTP, KC_MPLY, KC_MNXT, XXXXXXX,
+       XXXXXXX, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_BRIU,                     KC_VOLU, KC_MPRV, KC_MSTP, KC_MPLY, KC_MNXT, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
        XXXXXXX, KC_F5,   KC_F6,   KC_F7,   KC_F8,   RM_TOGG,                     KC_MUTE, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-       RM_HUED, KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_BRID,                     KC_VOLD, KC_HOME, KC_PGDN, KC_PGUP,  KC_END, XXXXXXX,
+       XXXXXXX, KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_BRID,                     KC_VOLD, KC_HOME, KC_PGDN, KC_PGUP,  KC_END, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           _______, KC_PSCR, _______,       _______, KC_DEL, _______
                                       //`--------------------------'  `--------------------------'
