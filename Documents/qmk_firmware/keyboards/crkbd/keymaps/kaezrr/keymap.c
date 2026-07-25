@@ -26,9 +26,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       RM_VALU,    KC_A,    KC_R,    KC_S,    KC_T,    KC_G,                         KC_M,    KC_N,    KC_E,    KC_I,    KC_O, KC_QUOT,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      RM_VALD,  LALT_T(KC_Z),LCTL_T(KC_X),LT(1,KC_C),LGUI_T(KC_D),KC_V,            KC_K, RGUI_T(KC_H),LT(1,KC_COMM),RCTL_T(KC_DOT),RALT_T(KC_SLSH),RM_NEXT,
+      RM_VALD,  LALT_T(KC_Z),LGUI_T(KC_X),LSFT_T(KC_C),LCTL_T(KC_D),KC_V,           KC_K, RCTL_T(KC_H),RSFT_T(KC_COMM),RGUI_T(KC_DOT),RALT_T(KC_SLSH),RM_NEXT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                      OS_LSFT, LM(3, MOD_LGUI),KC_SPC,  LT(2, KC_ENT),  KC_BSPC,   OS_RSFT
+                                           MO(1),  KC_SPC, LM(3, MOD_LGUI),  KC_ENT,  KC_BSPC,   MO(2)
                                       //`--------------------------'  `--------------------------'
   ),
 
