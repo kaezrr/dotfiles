@@ -3,6 +3,7 @@ WPM_ENABLE = yes
 KEY_OVERRIDE_ENABLE = no
 LTO_ENABLE = yes
 RGB_MATRIX_ENABLE = yes
+COMBO_ENABLE = yes
 SRC += oled.c
 
 # Bootloader definition

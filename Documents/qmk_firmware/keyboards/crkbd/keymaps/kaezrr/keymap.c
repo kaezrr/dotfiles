@@ -68,3 +68,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                       //`--------------------------'  `--------------------------'
   )
 };
+
+
+enum combos {
+    FP_QUOTE,
+    LU_DQUOTE,
+};
+
+const uint16_t PROGMEM quote_combo[] = {
+    KC_F, KC_P, COMBO_END
+};
+
+const uint16_t PROGMEM dquote_combo[] = {
+    KC_L, KC_U, COMBO_END
+};
+
+combo_t key_combos[] = {
+    [FP_QUOTE]     = COMBO(quote_combo, KC_QUOT),
+    [LU_DQUOTE] = COMBO(dquote_combo, KC_DQUO),
+};
