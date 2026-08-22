@@ -22,9 +22,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define MASTER_LEFT
 #define SPLIT_WPM_ENABLE
-
-#define TAPPING_TERM 200
-#define PERMISSIVE_HOLD
+#define COMBO_COUNT 3
 
 #ifdef RGB_MATRIX_ENABLE
 #    define RGB_MATRIX_DEFAULT_ON true
