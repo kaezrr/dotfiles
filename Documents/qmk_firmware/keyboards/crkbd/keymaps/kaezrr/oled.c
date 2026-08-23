@@ -1,15 +1,21 @@
 #include QMK_KEYBOARD_H
+#include <stdio.h>
 
-#define FRAME_SIZE 512
-#define TEXT_GLITCH_COUNT 7
-#define TEXT_GLITCH_DIRTY_COUNT 3
+#define frame_size 512
+#define text_glitch_count 7
+#define text_glitch_dirty_count 3
 
 
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
-    return OLED_ROTATION_270;
+  return OLED_ROTATION_270;
 }
 
-static const char PROGMEM text_clean[FRAME_SIZE] = {
+static bool glitch = true;
+static bool dirty = false;
+static uint8_t frame_count = 15;
+static uint16_t arasaka_timer;
+
+static const char PROGMEM text_clean[frame_size] = {
   0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xc0, 0xe0, 0xf0, 0xf8, 0x7c, 0x3e, 0x1f, 0x1f, 0x1f, 
   0x1c, 0x1e, 0x1f, 0x1f, 0x1f, 0x9f, 0xdf, 0x9f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
   0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xc3, 0x3f, 0xff, 0xff, 0xf8, 0xe0, 0xc0, 0xc0, 0xc0, 
@@ -44,7 +50,7 @@ static const char PROGMEM text_clean[FRAME_SIZE] = {
   0xf8, 0x78, 0x7c, 0x3f, 0x3f, 0x1f, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 };
 
-static const char PROGMEM text_glitch[TEXT_GLITCH_COUNT][FRAME_SIZE] = {
+static const char PROGMEM text_glitch[text_glitch_count][frame_size] = {
   {
     // frame 1
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xc0, 0xe0, 0xf0, 0xf8, 0x7c, 0x3e, 0x1f, 0x1f, 0x1f, 
@@ -292,7 +298,7 @@ static const char PROGMEM text_glitch[TEXT_GLITCH_COUNT][FRAME_SIZE] = {
   }
 };
 
-static const char PROGMEM text_glitch_dirty[TEXT_GLITCH_DIRTY_COUNT][FRAME_SIZE] = {
+static const char PROGMEM text_glitch_dirty[text_glitch_dirty_count][frame_size] = {
   {
     // frame 1
     0x00, 0x00, 0x00, 0x40, 0x60, 0x70, 0x78, 0x78, 0x38, 0x18, 0x98, 0x9c, 0x9e, 0x9f, 0x1f, 0x1f, 
@@ -400,106 +406,92 @@ static const char PROGMEM text_glitch_dirty[TEXT_GLITCH_DIRTY_COUNT][FRAME_SIZE]
   }
 };
 
-/* ---------------------------------------------------------
- * Draw clean text
- * --------------------------------------------------------- */
+void arasaka_text_clean(void)
+{
+  oled_write_raw_P(text_clean, frame_size);
+}
 
-static void draw_text_clean(void) {
-    oled_write_raw_P(text_clean, FRAME_SIZE);
+void arasaka_text_glitch_dirty(void)
+{
+  oled_write_raw_P(text_glitch_dirty[rand() % text_glitch_dirty_count], frame_size);
+}
+
+void arasaka_text_glitch(bool can_be_dirty)
+{
+  uint8_t frame = can_be_dirty
+    ? rand() % (text_glitch_count + text_glitch_dirty_count)
+    : rand() % text_glitch_count
+  ;
+
+  if (frame < text_glitch_count) {
+    oled_write_raw_P(text_glitch[frame], frame_size);
+
+    return;
+  }
+
+  arasaka_text_glitch_dirty();
 }
 
 
-/* ---------------------------------------------------------
- * Draw random normal glitch frame
- * --------------------------------------------------------- */
+void arasaka_draw(void) {
+  uint16_t timer = timer_elapsed(arasaka_timer);
 
-static void draw_text_glitch(void) {
-    oled_write_raw_P(
-        text_glitch[rand() % TEXT_GLITCH_COUNT],
-        FRAME_SIZE
-    );
+  if (timer < 150) {
+    arasaka_text_glitch_dirty();
+
+    return;
+  }
+
+  if (timer < 250) {
+    arasaka_text_glitch(true);
+
+    return;
+  }
+
+  if (timer > 9750 && timer < 9850) {
+    arasaka_text_glitch(true);
+
+    return;
+  }
+
+  if (timer > 9850 && timer < 10000) {
+    arasaka_text_glitch_dirty();
+
+    return;
+  }
+
+  if (timer > 10000) {
+    arasaka_timer = timer_read();
+  }
+
+  if (glitch && 0 != frame_count) {
+    frame_count--;
+    arasaka_text_glitch(true);
+
+    return;
+  }
+
+  glitch = false;
+  dirty = false;
+
+  arasaka_text_clean();
+
+  if (1 == rand() % 60) {
+    glitch = true;
+    frame_count = 1 + rand() % 4;
+
+    return;
+  }
+
+  if (1 == rand() % 60) {
+    glitch = true;
+    frame_count = 1 + rand() % 10;
+    dirty = frame_count > 5;
+  }
 }
-
-
-/* ---------------------------------------------------------
- * Draw random dirty glitch frame
- * --------------------------------------------------------- */
-
-static void draw_text_glitch_dirty(void) {
-    oled_write_raw_P(
-        text_glitch_dirty[rand() % TEXT_GLITCH_DIRTY_COUNT],
-        FRAME_SIZE
-    );
-}
-
-
-/* ---------------------------------------------------------
- * Animation state
- * --------------------------------------------------------- */
-
-static uint16_t text_timer = 0;
-static uint8_t glitch_frames = 0;
-
-
-/* ---------------------------------------------------------
- * Text-only Arasaka animation
- * --------------------------------------------------------- */
-
-static void draw_text_animation(void) {
-    uint16_t elapsed = timer_elapsed(text_timer);
-
-    /*
-     * Initial dirty glitch
-     */
-    if (elapsed < 150) {
-        draw_text_glitch_dirty();
-        return;
-    }
-
-    /*
-     * Initial normal glitch
-     */
-    if (elapsed < 300) {
-        draw_text_glitch();
-        return;
-    }
-
-    /*
-     * Occasional glitch
-     */
-    if (glitch_frames > 0) {
-        glitch_frames--;
-        draw_text_glitch();
-        return;
-    }
-
-    /*
-     * Show clean text
-     */
-    draw_text_clean();
-
-    /*
-     * Randomly trigger another glitch
-     */
-    if (rand() % 60 == 0) {
-        glitch_frames = 1 + (rand() % 4);
-    }
-
-    /*
-     * Restart the animation every 10 seconds
-     */
-    if (elapsed > 10000) {
-        text_timer = timer_read();
-        glitch_frames = 0;
-    }
-}
-
-
-/* ---------------------------------------------------------
- * OLED task
- * --------------------------------------------------------- */
 
 bool oled_task_user(void) {
-    draw_text_animation();
-    return false;
+  oled_set_brightness(0);
+  arasaka_draw();
+  return false;
 }
