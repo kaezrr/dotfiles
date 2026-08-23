@@ -1,8 +1,8 @@
 OLED_ENABLE = yes
-WPM_ENABLE = yes
 LTO_ENABLE = yes
 RGB_MATRIX_ENABLE = yes
 COMBO_ENABLE = yes
+CAPS_WORD_ENABLE = yes
 SRC += oled.c
 
 # Bootloader definition
