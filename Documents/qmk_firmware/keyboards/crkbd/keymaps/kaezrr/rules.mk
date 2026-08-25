@@ -4,6 +4,7 @@ RGB_MATRIX_ENABLE = yes
 COMBO_ENABLE = yes
 CAPS_WORD_ENABLE = yes
 SRC += oled.c
+LDFLAGS += -B/usr/lib/avr/lib/avr5
 
 # Bootloader definition
 BOOTLOADER = atmel-dfu
@@ -24,3 +25,4 @@ BOOTMAGIC_ENABLE = no
 
 # Ensure media keys work (KC_MPLY, KC_VOLD, KC_VOLU, etc.)
 EXTRAKEY_ENABLE = yes
+ALLOW_WARNINGS = yes
