@@ -20,6 +20,11 @@ window-rule {
 }
 
 window-rule {
+    match title="- PROJECT$"
+    open-floating true
+}
+
+window-rule {
     match app-id="kitty"
     default-column-width { proportion 0.5; }
 }

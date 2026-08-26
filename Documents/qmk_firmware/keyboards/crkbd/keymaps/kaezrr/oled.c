@@ -490,8 +490,38 @@ void arasaka_draw(void) {
   }
 }
 
-bool oled_task_user(void) {
-  oled_set_brightness(0);
-  arasaka_draw();
-  return false;
+static void arasaka_status_draw(void) {
+    // Current layer name
+    switch (get_highest_layer(layer_state)) {
+        case 0: oled_write_ln_P(PSTR("ALPHA"), false); break;
+        case 1: oled_write_ln_P(PSTR("SYMBL"),   false); break;
+        case 2: oled_write_ln_P(PSTR("NAVIG"),   false); break;
+        case 3: oled_write_ln_P(PSTR("NUMBR"),   false); break;
+        case 4: oled_write_ln_P(PSTR("HMODS"),  false); break;
+        default: oled_write_ln_P(PSTR("?"),    false); break;
+    }
+
+    oled_write_ln_P(PSTR(""), false); // spacer line
+
+    // Mod row: A G C S, letter inverted when held or one-shot armed
+    uint8_t mods = get_mods() | get_oneshot_mods();
+
+    oled_write_char('A', mods & MOD_MASK_ALT);
+    oled_write_char('G', mods & MOD_MASK_GUI);
+    oled_write_char('C', mods & MOD_MASK_CTRL);
+    oled_write_char('S', mods & MOD_MASK_SHIFT);
+    oled_write_ln_P(PSTR(""), false); // close out the line
 }
+
+bool oled_task_user(void) {
+    oled_set_brightness(0);
+
+    if (is_keyboard_left()) {
+        arasaka_status_draw();
+    } else {
+        arasaka_draw();
+    }
+
+    return false;
+}
+
