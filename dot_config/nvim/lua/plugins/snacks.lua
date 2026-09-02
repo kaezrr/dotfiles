@@ -58,7 +58,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
     },
     {
       '<leader>sf',
-      function() Snacks.picker.smart() end,
+      function() Snacks.picker.files() end,
       desc = '[S]earch [F]iles',
     },
     {
