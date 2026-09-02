@@ -118,6 +118,10 @@ return {
         },
       },
 
+      wgsl_analyzer = {
+        languages = { 'wgsl' },
+      },
+
       ty = {
         languages = { 'python' },
       },
