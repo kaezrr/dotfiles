@@ -88,63 +88,31 @@ return {
       },
     }
 
-    local lsp = {
-      clangd = {
-        languages = { 'c', 'cpp' },
-        config = {
-          cmd = {
-            'clangd',
-            '--header-insertion=never',
+    vim.lsp.config('clangd', {
+      cmd = {
+        'clangd',
+        '--header-insertion=never',
+      },
+    })
+
+    vim.lsp.config('rust_analyzer', {
+      settings = {
+        ['rust-analyzer'] = {
+          checkOnSave = true,
+          check = { command = 'clippy' },
+          rustfmt = {
+            extraArgs = { '+nightly' },
           },
         },
       },
+    })
 
-      lua_ls = {
-        languages = { 'lua' },
-      },
-
-      rust_analyzer = {
-        languages = { 'rust' },
-        config = {
-          settings = {
-            ['rust-analyzer'] = {
-              checkOnSave = true,
-              check = { command = 'clippy' },
-              rustfmt = {
-                extraArgs = { '+nightly' },
-              },
-            },
-          },
-        },
-      },
-
-      wgsl_analyzer = {
-        languages = { 'wgsl' },
-      },
-
-      ty = {
-        languages = { 'python' },
-      },
+    vim.lsp.enable {
+      'lua_ls',
+      'clangd',
+      'rust_analyzer',
+      'wgsl_analyzer',
+      'ty',
     }
-
-    local augroup = vim.api.nvim_create_augroup('lsp', { clear = true })
-
-    for server, entry in pairs(lsp) do
-      -- register configs if present
-      if entry.config then
-        vim.lsp.config(server, entry.config)
-      end
-
-      -- autocmds for each language
-      for _, ft in ipairs(entry.languages) do
-        vim.api.nvim_create_autocmd('FileType', {
-          group = augroup,
-          pattern = ft,
-          callback = function()
-            vim.schedule(function() vim.lsp.enable { server } end)
-          end,
-        })
-      end
-    end
   end,
 }

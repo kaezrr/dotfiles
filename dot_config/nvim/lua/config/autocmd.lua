@@ -34,22 +34,3 @@ vim.api.nvim_create_autocmd('FileType', {
     vim.bo.tabstop = 2
   end,
 })
-
-vim.api.nvim_create_autocmd('User', {
-  pattern = 'TSUpdate',
-  callback = function()
-    require('nvim-treesitter.parsers').lox = {
-      install_info = {
-        url = 'https://github.com/kaezrr/tree-sitter-lox',
-        queries = 'queries',
-      },
-    }
-  end,
-})
-
-vim.filetype.add {
-  extension = {
-    lox = 'lox',
-    wgsl = 'wgsl',
-  },
-}
