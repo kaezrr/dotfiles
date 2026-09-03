@@ -1,0 +1,54 @@
+{
+  "plugins": {
+    "blink.cmp": {
+      "rev": "78336bc89ee5365633bcf754d93df01678b5c08f",
+      "src": "https://github.com/saghen/blink.cmp",
+      "version": "1.0.0 - 2.0.0"
+    },
+    "conform.nvim": {
+      "rev": "016802de402556da54c36bd7359b441266b01cdd",
+      "src": "https://github.com/stevearc/conform.nvim"
+    },
+    "gitsigns.nvim": {
+      "rev": "5be654f2232c10ddcad19c1607a67b6b4b78fc29",
+      "src": "https://github.com/lewis6991/gitsigns.nvim"
+    },
+    "kanagawa": {
+      "rev": "bb85e4bfc8d89b0e62c8fa53ccdd13d12e2f77b3",
+      "src": "https://github.com/rebelot/kanagawa.nvim"
+    },
+    "kanagawa.nvim": {
+      "rev": "bb85e4bfc8d89b0e62c8fa53ccdd13d12e2f77b3",
+      "src": "https://github.com/rebelot/kanagawa.nvim"
+    },
+    "lazydev.nvim": {
+      "rev": "ff2cbcba459b637ec3fd165a2be59b7bbaeedf0d",
+      "src": "https://github.com/folke/lazydev.nvim"
+    },
+    "mini.nvim": {
+      "rev": "9d01f392b33fb2ba36fbc87fc0bf4453e63ffb0a",
+      "src": "https://github.com/nvim-mini/mini.nvim"
+    },
+    "nvim-lspconfig": {
+      "rev": "ee1e369181a9e64904cdd7b739e98c70778cfc71",
+      "src": "https://github.com/neovim/nvim-lspconfig"
+    },
+    "nvim-treesitter": {
+      "rev": "427e9222363d07c32d6db6169e4049c28d58d141",
+      "src": "https://github.com/nvim-treesitter/nvim-treesitter"
+    },
+    "plenary.nvim": {
+      "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",
+      "src": "https://github.com/nvim-lua/plenary.nvim"
+    },
+    "snacks.nvim": {
+      "rev": "882c996cf28183f4d63640de0b4c02ec886d01f2",
+      "src": "https://github.com/folke/snacks.nvim"
+    },
+    "yazi.nvim": {
+      "rev": "2508e758d9057da9a3ec3f8c53e9f33a46a66e2d",
+      "src": "https://github.com/mikavilpas/yazi.nvim",
+      "version": ">=0.0.0"
+    }
+  }
+}
