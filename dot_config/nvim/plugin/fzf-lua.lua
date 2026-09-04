@@ -1,6 +1,7 @@
 vim.pack.add { 'https://github.com/ibhagwan/fzf-lua' }
 
 require('fzf-lua').setup()
+require('fzf-lua').register_ui_select()
 
 vim.keymap.set('n', '<leader>sh', function() FzfLua.helptags() end, { desc = '[S]earch [H]elp' })
 vim.keymap.set('n', '<leader>sk', function() FzfLua.keymaps() end)
