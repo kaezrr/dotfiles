@@ -6,8 +6,6 @@ vim.pack.add {
   },
 }
 
----@module 'blink.cmp'
----@type blink.cmp.Config
 require('blink.cmp').setup {
   keymap = { preset = 'default' },
   appearance = { nerd_font_variant = 'mono' },

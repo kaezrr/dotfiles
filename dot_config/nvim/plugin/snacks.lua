@@ -5,57 +5,6 @@ vim.pack.add {
 ---@type snacks.Config
 require('snacks').setup {
   picker = {},
-  bigfile = {},
-  notifier = {
-    enabled = true,
-    timeout = 3000,
-  },
-  dashboard = {
-    preset = {
-      header = [[
-  ███▄▄▄▄      ▄████████  ▄██████▄   ▄█    █▄   ▄█    ▄▄▄▄███▄▄▄▄
-  ███▀▀▀██▄   ███    ███ ███    ███ ███    ███ ███  ▄██▀▀▀███▀▀▀██▄
-  ███   ███   ███    ▀█  ███    ███ ███    ███ ███▌ ███   ███   ███
-  ███   ███  ▄███▄▄▄     ███    ███ ███    ███ ███▌ ███   ███   ███
-  ███   ███ ▀▀███▀▀▀     ███    ███ ███    ███ ███▌ ███   ███   ███
-  ███   ███   ███    █▄  ███    ███ ███    ███ ███  ███   ███   ███
-  ███   ███   ███    ███ ███    ███ ███    ███ ███  ███   ███   ███
-   ▀█   █▀    ██████████  ▀██████▀   ▀██████▀  ▀█    ▀█   ███   █▀
-       ]],
-
-      keys = {
-        {
-          icon = ' ',
-          key = 'f',
-          desc = 'Find File',
-          action = ":lua Snacks.dashboard.pick('files')",
-        },
-        {
-          icon = ' ',
-          key = 'g',
-          desc = 'Find Text',
-          action = ":lua Snacks.dashboard.pick('live_grep')",
-        },
-        {
-          icon = ' ',
-          key = 'c',
-          desc = 'Config',
-          action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})",
-        },
-        {
-          icon = ' ',
-          key = 'q',
-          desc = 'Quit',
-          action = ':qa',
-        },
-      },
-    },
-
-    sections = {
-      { section = 'header' },
-      { section = 'keys', gap = 1, padding = 1 },
-    },
-  },
 }
 
 vim.keymap.set('n', '<leader>gg', function() Snacks.lazygit.open() end)
